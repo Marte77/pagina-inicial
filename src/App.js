@@ -60,11 +60,13 @@ function WhatIWorkWith(props) {
             <ExpandableSection
               title="Work experience"
               arrayOfContents={[
-                <ExpandableSection
+            <ExpandableSection
+              key='job'
               title="My current job at Altice Labs"
               arrayOfContents={["Java using JSLEE", "SIP"]}
             />,
             <ExpandableSection
+              key='ipv'
               title="In IPV Health+ (project I participated in during school)"
               arrayOfContents={["Flutter/Dart", "MySQL", "PHP"]}
             />
@@ -145,7 +147,11 @@ function Window(props) {
           ></button>
         );
       }
-    } else {
+    } else if (btn === windowButtons.close) {
+      if(props.onClose)
+        buttons.push(<button key={btn} aria-label={btn} onClick={props.onClose}></button>)
+      else buttons.push(<button key={btn} aria-label={btn}></button>)
+    }else {
       buttons.push(<button key={btn} aria-label={btn}></button>);
     }
   }
@@ -160,6 +166,7 @@ function Window(props) {
       x:props.pos.x,y:props.pos.y
     }}
     bounds='parent'
+    disabled={isMobile}
     >
       <div ref={nodeRef}>
         <div className="window" style={{ width: "300px" }}>
@@ -169,11 +176,11 @@ function Window(props) {
               {buttons}
             </div>
           </div>
-          {isWindowOpen ?
+          {isWindowOpen &&
           <div className="window-body">
               {props.children}
           </div>
-            : null}
+            }
         </div>
       </div>
     </Draggable>
@@ -211,6 +218,25 @@ function Socials(props) {
   )
 }
 
+function MobileWarning(props){
+  const [isHidden, setHidden] = useState(false)
+  return(
+    !isHidden ?
+    <Window onClose={() => setHidden(false)} title="Mobile user warning" buttons={[windowButtons.close]} pos={{x:-200,y:-250}}>
+      <ul className="tree-view">
+        <li className="tree-view">
+          This website is better viewed in a desktop browser!
+        </li>
+      </ul>
+      <section className="field-row" style={{justifyContent: "flex-end"}}>
+        <button onClick={() => setHidden(true)}>I've been warned</button>
+      </section>
+    </Window>
+    :
+    <div></div>
+  )
+}
+
 function App() {
   return (
     <>
@@ -222,6 +248,10 @@ function App() {
       </div>
       <div className="App">
         {/*<header className="App-header">martinho</header>*/}
+        {
+          isMobile && 
+          <MobileWarning/>
+        }
         <WhatIWorkWith />
         <Bio/>
         <Socials/>
