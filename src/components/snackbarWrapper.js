@@ -20,11 +20,11 @@ export function SnackbarWrapper(props) {
 			open={state.open}
 			onClose={handleClose}
 			key={vertical + horizontal}
-			autoHideDuration={1500}
+			autoHideDuration={2100}
 			anchorOrigin={{ vertical, horizontal }}
 			TransitionComponent={state.Transition}
 		>
-			<Alert severity="info">{props.message}</Alert>
+			<Alert variant="filled" icon={false} severity="success">{props.message}</Alert>
 		</Snackbar>
 	);
 }
