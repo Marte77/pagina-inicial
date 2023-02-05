@@ -10,6 +10,7 @@ export function MusicPlayer(props){
         if(!hasPlayed){
             setHasPlayed(true)
             audio.play() 
+            audio.loop = true
         }
         audio.volume = value === 0 ? 0 : (value-1)/10
     }
