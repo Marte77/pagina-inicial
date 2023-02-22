@@ -7,6 +7,7 @@ import mozilla_gecko from "../images/gifs/mozilla_gecko.gif";
 import made_with_macos1 from "../images/gifs/made_with_macos1.gif";
 import lol from "../images/gifs/lol.gif";
 import hello_kitty from "../images/gifs/hello_kitty.gif";
+import botao_broda from "../images/gifs/botao_broda.png";
 
 export function Buttons88x31(props) {
 	let style = { pointerEvents: "none" };
@@ -19,10 +20,11 @@ export function Buttons88x31(props) {
 		{ alt: "made_with_macos1", button: made_with_macos1 },
 		{ alt: "lol", button: lol },
 		{ alt: "hello_kitty", button: hello_kitty },
+		{ alt: "broda", button: botao_broda },
 	];
 	return (
-		<Grid style={style} container spacing={2} position="fixed" bottom={1}>
-			<Grid item container xs={4}></Grid>
+		<Grid style={style} container spacing={2} position="fixed" bottom={0}>
+			<Grid item container xs={5}></Grid>
 			<Grid
 				item
 				container
@@ -40,11 +42,12 @@ export function Buttons88x31(props) {
 				</a>
 				&nbsp; and react
 			</Grid>
-			<Grid item container xs={4}></Grid>
-			<Grid item container xs={3.32}></Grid>
+			<Grid item container xs={3}></Grid>
+			{/*linha dos botoes e debaixo disto*/}
+			<Grid item container xs={3}></Grid>
 			{buttons.map((btn, index) => {
 				return (
-					<Grid key={index} item container xs={0.69}>
+					<Grid key={btn.alt} item container xs={0.69}>
 						<img alt={btn.alt} src={btn.button}></img>
 					</Grid>
 				);
