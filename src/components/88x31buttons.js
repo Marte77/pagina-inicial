@@ -7,7 +7,7 @@ import mozilla_gecko from "../images/gifs/mozilla_gecko.gif";
 import made_with_macos1 from "../images/gifs/made_with_macos1.gif";
 import lol from "../images/gifs/lol.gif";
 import hello_kitty from "../images/gifs/hello_kitty.gif";
-import botao_broda from "../images/gifs/botao_broda.mp4";
+import botao_broda from "../images/gifs/botao_broda.png";
 
 export function Buttons88x31(props) {
 	let style = { pointerEvents: "none" };
