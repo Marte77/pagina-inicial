@@ -3,7 +3,7 @@ import { useRef, useState } from "react";
 import { isMobile } from "react-device-detect";
 import Draggable from "react-draggable";
 import { windowButtons } from "./windowButtonsEnum";
-
+import move from "../images/hand-drawn-3/move.png"
 const getRandom = (min, max) =>
 	Math.floor(Math.random() * (max - min + 1) + min);
 
@@ -111,7 +111,7 @@ export function Window(props) {
 		>
 			<div ref={nodeRef}>
 				<div className="window">
-					<div className="title-bar" >
+					<div className="title-bar" style={{cursor:"url("+move+"), auto"}} >
 						<div className="title-bar-text">{props.title === undefined ? "​" : props.title}</div>
 						<div className="title-bar-controls">{buttons}</div>
 					</div>

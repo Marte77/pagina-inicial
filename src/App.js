@@ -10,6 +10,7 @@ import { Socials } from "./components/socials";
 import { Buttons88x31 } from "./components/88x31buttons";
 import { MusicPlayer } from "./components/musicPlayer";
 
+import pointer from "./images/hand-drawn-3/pointer.png"
 import spamton_cropped from "./audio/spamton_cropped.mp3"
 import bliss from './images/bliss.png'
 
@@ -22,7 +23,7 @@ function closeTab(e) {
 function App() {
   const audio = new Audio(spamton_cropped)
   return (
-    <>
+    <div style={{cursor:"url("+pointer+"),auto"}}>
       <div className="title-bar inactive">
         <div className="title-bar-text">martinho tm - resumo</div>
         <div className="title-bar-controls">
@@ -45,7 +46,7 @@ function App() {
         <MusicPlayer music={audio}/>
         <Buttons88x31/>
       </div>
-    </>
+    </div>
   );
 }
 
