@@ -7,7 +7,7 @@ import mozilla_gecko from "../images/gifs/mozilla_gecko.gif";
 import made_with_macos1 from "../images/gifs/made_with_macos1.gif";
 import lol from "../images/gifs/lol.gif";
 import hello_kitty from "../images/gifs/hello_kitty.gif";
-import botao_broda from "../images/gifs/botao_broda.png";
+import botao_broda from "../images/gifs/botao_broda.mp4";
 
 export function Buttons88x31(props) {
 	let style = { pointerEvents: "none" };
@@ -44,13 +44,26 @@ export function Buttons88x31(props) {
 			</Grid>
 			<Grid item container xs={3}></Grid>
 			{/*linha dos botoes e debaixo disto*/}
-			<Grid item container xs={3}></Grid>
+			<Grid item container xs={5}></Grid>
 			{buttons.map((btn, index) => {
-				return (
-					<Grid key={btn.alt} item container xs={0.69}>
-						<img alt={btn.alt} src={btn.button}></img>
-					</Grid>
-				);
+				if(btn.alt !== "broda")
+					return (
+						<Grid key={btn.alt} item container xs={0.59} >
+							<img alt={btn.alt} src={btn.button}></img>
+						</Grid>
+					);
+				let redirectBroda = () => {
+					window.location.href = "http://ricadinho.eu"
+				};
+				window.addEventListener("click", (event) =>{
+					console.log(event)
+				})
+				let elem = (
+				<Grid key={btn.alt} item container xs={0.69} style={{pointerEvents:"all", cursor:"crosshair"}}>
+					<img alt={btn.alt} src={btn.button} onClick={redirectBroda}></img>
+				</Grid>)
+				
+				return elem;
 			})}
 		</Grid>
 	);
