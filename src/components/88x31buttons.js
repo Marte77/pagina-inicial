@@ -44,7 +44,7 @@ export function Buttons88x31(props) {
 			</Grid>
 			<Grid item container xs={3}></Grid>
 			{/*linha dos botoes e debaixo disto*/}
-			<Grid item container xs={5}></Grid>
+			<Grid item container xs={3.33}></Grid>
 			{buttons.map((btn, index) => {
 				if(btn.alt !== "broda")
 					return (
