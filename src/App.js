@@ -27,7 +27,10 @@ function App() {
     <div>
       <div className="title-bar inactive">
         <div className="title-bar-text">martinho tm - resumo</div>
-        <img alt="under_construction" src={under_construction}/>
+        {
+          isMobile &&
+          <img alt="under_construction" src={under_construction}/>
+        }
         <div className="title-bar-controls">
           <button aria-label="Close" onClick={closeTab}></button>
         </div>
