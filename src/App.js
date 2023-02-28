@@ -28,7 +28,7 @@ function App() {
       <div className="title-bar inactive">
         <div className="title-bar-text">martinho tm - resumo</div>
         {
-          isMobile &&
+          !isMobile &&
           <img alt="under_construction" src={under_construction}/>
         }
         <div className="title-bar-controls">
