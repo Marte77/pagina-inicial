@@ -1,4 +1,4 @@
-import { Grid, Tooltip } from "@mui/material";
+import { Grid, Tooltip, Zoom } from "@mui/material";
 import get_java_now from "../images/gifs/get_java_now.gif";
 import hate_squarespace from "../images/gifs/hate_squarespace.png";
 import vscode_button from "../images/gifs/vscode_button.gif";
@@ -60,7 +60,7 @@ export function Buttons88x31(props) {
 				})
 				let elem = (
 				<Grid key={btn.alt} item container xs={0.69} style={{pointerEvents:"all", cursor:"crosshair"}}>
-					<Tooltip title="BRODA" placement="top">
+					<Tooltip title="BRODA" placement="top" disableInteractive TransitionComponent={Zoom} followCursor arrow>
 						<img alt={btn.alt} src={btn.button} onClick={redirectBroda}></img>
 					</Tooltip>
 				</Grid>)
