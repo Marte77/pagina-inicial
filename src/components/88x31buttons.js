@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import { Grid, Tooltip } from "@mui/material";
 import get_java_now from "../images/gifs/get_java_now.gif";
 import hate_squarespace from "../images/gifs/hate_squarespace.png";
 import vscode_button from "../images/gifs/vscode_button.gif";
@@ -43,7 +43,7 @@ export function Buttons88x31(props) {
 				&nbsp; and react
 			</Grid>
 			<Grid item container xs={3}></Grid>
-			{/*linha dos botoes e debaixo disto*/}
+			{/*linha dos botoes é debaixo disto*/}
 			<Grid item container xs={3.33}></Grid>
 			{buttons.map((btn, index) => {
 				if(btn.alt !== "broda")
@@ -60,7 +60,9 @@ export function Buttons88x31(props) {
 				})
 				let elem = (
 				<Grid key={btn.alt} item container xs={0.69} style={{pointerEvents:"all", cursor:"crosshair"}}>
-					<img alt={btn.alt} src={btn.button} onClick={redirectBroda}></img>
+					<Tooltip title="BRODA" placement="top">
+						<img alt={btn.alt} src={btn.button} onClick={redirectBroda}></img>
+					</Tooltip>
 				</Grid>)
 				
 				return elem;
