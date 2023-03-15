@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { PrivacyPolicy } from './components/privacy/privacy';
+import { AppAds } from './components/app-ads/appads';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 const router = createBrowserRouter([
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
     path:'/privacy',
     element:<PrivacyPolicy/>
   },
+  {
+    path:'/app-ads.txt',
+    element:<AppAds></AppAds>
+  }
 ])
 
 root.render(
