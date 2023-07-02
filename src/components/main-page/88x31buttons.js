@@ -47,20 +47,17 @@ export function Buttons88x31(props) {
 				&nbsp; and react
 			</div>
 
-			<div className="container">
+			<div className="container" >
 				{buttons.map((btn, index) => {
-					if (btn.alt !== "broda")
+					if (btn.alt !== botao_broda.toLowerCase())
 						return (
-							<div key={btn.alt} className="box">
+							<div key={btn.alt} style={{pointerEvents:'none'}} className="box">
 								<img alt={btn.alt} src={btn.button}></img>
 							</div>
 						);
 					let redirectBroda = () => {
 						window.location.href = "http://ricadinho.eu";
 					};
-					window.addEventListener("click", (event) => {
-						console.log(event);
-					});
 
 					return (
 						<div
