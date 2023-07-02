@@ -1,6 +1,6 @@
 import { Window } from "./window";
-import github from "../images/github.svg";
-import linkedin from "../images/linkedin.png";
+import github from "../../images/github.svg";
+import linkedin from "../../images/linkedin.png";
 
 export function Socials(props) {
 	return (

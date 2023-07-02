@@ -1,13 +1,13 @@
 import { Grid, Tooltip, Zoom } from "@mui/material";
-import get_java_now from "../images/gifs/get_java_now.gif";
-import hate_squarespace from "../images/gifs/hate_squarespace.png";
-import vscode_button from "../images/gifs/vscode_button.gif";
-import powered_by_debian from "../images/gifs/powered_by_debian.gif";
-import mozilla_gecko from "../images/gifs/mozilla_gecko.gif";
-import made_with_macos1 from "../images/gifs/made_with_macos1.gif";
-import lol from "../images/gifs/lol.gif";
-import hello_kitty from "../images/gifs/hello_kitty.gif";
-import botao_broda from "../images/gifs/botao_broda.png";
+import get_java_now from "../../images/gifs/get_java_now.gif";
+import hate_squarespace from "../../images/gifs/hate_squarespace.png";
+import vscode_button from "../../images/gifs/vscode_button.gif";
+import powered_by_debian from "../../images/gifs/powered_by_debian.gif";
+import mozilla_gecko from "../../images/gifs/mozilla_gecko.gif";
+import made_with_macos1 from "../../images/gifs/made_with_macos1.gif";
+import lol from "../../images/gifs/lol.gif";
+import hello_kitty from "../../images/gifs/hello_kitty.gif";
+import botao_broda from "../../images/gifs/botao_broda.png";
 
 export function Buttons88x31(props) {
 	let style = { pointerEvents: "none" };

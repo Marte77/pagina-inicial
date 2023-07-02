@@ -2,13 +2,13 @@ import "./App.css";
 import "98.css";
 
 import { isMobile } from "react-device-detect";
-import { SnackbarWrapper } from "./components/snackbarWrapper";
-import { MobileWarning } from "./components/mobileWarning";
-import { WhatIWorkWith } from "./components/whatIWorkWith";
-import { Bio } from "./components/bio";
-import { Socials } from "./components/socials";
-import { Buttons88x31 } from "./components/88x31buttons";
-import { MusicPlayer } from "./components/musicPlayer";
+import { SnackbarWrapper } from "./components/main-page/snackbarWrapper";
+import { MobileWarning } from "./components/main-page/mobileWarning";
+import { WhatIWorkWith } from "./components/main-page/whatIWorkWith";
+import { Bio } from "./components/main-page/bio";
+import { Socials } from "./components/main-page/socials";
+import { Buttons88x31 } from "./components/main-page/88x31buttons";
+import { MusicPlayer } from "./components/main-page/musicPlayer";
 
 import spamton_cropped from "./audio/spamton_cropped.mp3"
 import bliss from './images/bliss.png'
