@@ -23,6 +23,10 @@ const router = createBrowserRouter([
     element:<AppAds/>
   },
   {
+    path:'/blog/:name',
+    element:<Blog/>
+  },
+  {
     path:'/blog',
     element:<Blog/>
   }
