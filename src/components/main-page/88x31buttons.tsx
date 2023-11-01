@@ -10,11 +10,11 @@ import hello_kitty from "../../images/gifs/hello_kitty.gif";
 import botao_broda from "../../images/gifs/botao_broda.png";
 import "../main-page/buttonsscroll.css";
 
-function makeButtonObj(btn){
+function makeButtonObj(btn: string){
 	return {alt: btn.toLowerCase(), button: btn}
 }
 
-export function Buttons88x31(props) {
+export function Buttons88x31() {
 	let buttons = [
 		makeButtonObj(get_java_now),
 		makeButtonObj(hate_squarespace),

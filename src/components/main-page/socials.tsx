@@ -2,7 +2,9 @@ import { Window } from "./window";
 import github from "../../images/github.svg";
 import linkedin from "../../images/linkedin.png";
 
-export function Socials(props) {
+type SocialsProps = {}
+
+export function Socials(props: SocialsProps) {
 	return (
 		<Window title="Socials" pos={{ x: -500, y: 100 }}>
 			<ul className="tree-view">

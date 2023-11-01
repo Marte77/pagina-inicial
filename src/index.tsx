@@ -6,7 +6,8 @@ import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { PrivacyPolicy } from './components/privacy/privacy';
 import { AppAds } from './components/app-ads/appads';
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import { Blog } from './components/blog/blog';
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 
 const router = createBrowserRouter([
   {
@@ -18,8 +19,12 @@ const router = createBrowserRouter([
     element:<PrivacyPolicy/>
   },
   {
-    path:'/app-ads.txt',
-    element:<AppAds></AppAds>
+    path:'/app-ads2.txt',
+    element:<AppAds/>
+  },
+  {
+    path:'/blog',
+    element:<Blog/>
   }
 ])
 

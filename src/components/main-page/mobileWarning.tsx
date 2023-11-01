@@ -1,14 +1,16 @@
 import { useState } from "react";
 import { Window } from "./window";
-import { windowButtons } from "./windowButtonsEnum";
+import { WindowButtonsEnum } from "./windowButtonsEnum";
 
-export function MobileWarning(props) {
+type MobileWarningProps = {}
+
+export function MobileWarning(props: MobileWarningProps) {
 	const [isHidden, setHidden] = useState(false);
 	return !isHidden ? (
 		<Window
 			onClose={() => setHidden(false)}
 			title="Mobile user warning"
-			buttons={[windowButtons.close]}
+			buttons={[WindowButtonsEnum.close]}
 			pos={{ x: -200, y: -250 }}
 		>
 			<ul className="tree-view">

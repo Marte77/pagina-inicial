@@ -9,13 +9,14 @@ import { Bio } from "./components/main-page/bio";
 import { Socials } from "./components/main-page/socials";
 import { Buttons88x31 } from "./components/main-page/88x31buttons";
 import { MusicPlayer } from "./components/main-page/musicPlayer";
+import { useNavigate } from "react-router-dom";
 
 import spamton_cropped from "./audio/spamton_cropped.mp3"
 import bliss from './images/bliss.png'
 
 import under_construction from './images/under_construction.png'
 
-function closeTab(e) {
+function closeTab(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
   window.opener = null;
   window.open("", "_self");
   window.close();
@@ -23,6 +24,11 @@ function closeTab(e) {
 
 function App() {
   const audio = new Audio(spamton_cropped)
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+      navigate("/blog");
+  }
   return (
     <div>
       <div className="title-bar inactive">
@@ -32,6 +38,7 @@ function App() {
           <img alt="under_construction" src={under_construction}/>
         }
         <div className="title-bar-controls">
+          <button aria-label="Help" onClick={handleClick}></button>
           <button aria-label="Close" onClick={closeTab}></button>
         </div>
       </div>

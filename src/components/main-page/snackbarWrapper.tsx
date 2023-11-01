@@ -1,8 +1,18 @@
-import { Alert, Slide, Snackbar } from "@mui/material";
+import { Alert, Slide, SlideProps, Snackbar } from "@mui/material";
 import React from "react";
 
-export function SnackbarWrapper(props) {
-	const [state, setState] = React.useState({
+type SnackbarWrapperProps = {
+	message: string
+}
+type SnackbarWrapperState = {
+	open: boolean,
+	Transition: (props: SlideProps) => JSX.Element,
+	vertical: "top" | "bottom"
+	horizontal: "center" | "left" | "right"
+}
+
+export function SnackbarWrapper(props: SnackbarWrapperProps) {
+	const [state, setState] = React.useState<SnackbarWrapperState>({
 		open: true,
 		Transition: Slide,
 		vertical: "top",

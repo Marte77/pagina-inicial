@@ -1,17 +1,34 @@
 import { ClickAwayListener, Tooltip } from "@mui/material";
-import { useRef, useState } from "react";
+import { SyntheticEvent, useRef, useState } from "react";
 import { isMobile } from "react-device-detect";
 import Draggable from "react-draggable";
-import { windowButtons } from "./windowButtonsEnum";
+import { WindowButtonsEnum } from "./windowButtonsEnum";
 
-const getRandom = (min, max) =>
+const getRandom = (min: number, max: number) =>
 	Math.floor(Math.random() * (max - min + 1) + min);
 
-export function Window(props) {
+declare global {
+	interface Window {
+		safari:any
+	}
+}
+type WindowProps = {
+	buttons?: Array<WindowButtonsEnum>,
+	title?: string,
+	tooltip?: string,
+	pos?: {
+		x: number, y: number
+	},
+	onClose?: (() => void),
+	style?: React.CSSProperties,
+	children: React.ReactNode 
+}
+
+export function Window(props: WindowProps) : JSX.Element {
 	const nodeRef = useRef(null);
 	let [isWindowOpen, setWindowOpen] = useState(true);
 	let [openTooltip, setOpenTooltip] = useState(false);
-	const handleTooltipClose = (e) => {
+	const handleTooltipClose = (e: Event | SyntheticEvent<Element, Event>) => {
 		setOpenTooltip(false);
 		if (window.safari !== undefined) {
 			console.log(
@@ -19,14 +36,14 @@ export function Window(props) {
 			);
 		}
 	};
-	const handleTooltipOpen = (e) => {
+	const handleTooltipOpen = (e: Event | SyntheticEvent<Element, Event>) => {
 		setOpenTooltip(true);
 	};
 	let buttons = [];
 	let tooltip = props.tooltip;
 	if (props.buttons)
 		for (let btn of props.buttons) {
-			if (btn === windowButtons.hide) {
+			if (btn === WindowButtonsEnum.hide) {
 				buttons.push(
 					<button
 						key={btn}
@@ -34,7 +51,7 @@ export function Window(props) {
 						aria-label="Minimize"
 					></button>
 				);
-			} else if (btn === windowButtons.help) {
+			} else if (btn === WindowButtonsEnum.help) {
 				if (tooltip !== undefined) {
 					buttons.push(
 						<ClickAwayListener
@@ -65,7 +82,7 @@ export function Window(props) {
 				} else {
 					buttons.push(<button aria-label={btn} key={btn}></button>);
 				}
-			} else if (btn === windowButtons.close) {
+			} else if (btn === WindowButtonsEnum.close) {
 				if (props.onClose)
 					buttons.push(
 						<button
@@ -96,7 +113,7 @@ export function Window(props) {
 		pos.x = getRandom(-(x - val), x - val);
 		pos.y = getRandom(-(y - val), y - val);
 	}
-	let style = props.style === undefined ? {} : props.style;
+	let style = props.style ?? {};
 	style["overflow"] = "auto";
 	let cursorStyle = {cursor:"grab"}
 	return (
@@ -113,7 +130,7 @@ export function Window(props) {
 			<div ref={nodeRef}>
 				<div className="window">
 					<div className="title-bar" style={cursorStyle} >
-						<div style={cursorStyle} className="title-bar-text">{props.title === undefined ? "​" : props.title}</div>
+						<div style={cursorStyle} className="title-bar-text">{props.title ?? ""}</div>
 						<div style={cursorStyle} className="title-bar-controls">{buttons}</div>
 					</div>
 					{isWindowOpen && (

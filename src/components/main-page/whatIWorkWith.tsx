@@ -1,14 +1,16 @@
 import { ExpandableSection } from "./expandableSection";
 import { Window } from "./window";
-import { windowButtons } from "./windowButtonsEnum";
+import { WindowButtonsEnum } from "./windowButtonsEnum";
 
-export function WhatIWorkWith(props) {
+type WhatIWorkWithProps = {}
+
+export function WhatIWorkWith(props: WhatIWorkWithProps) {
 	return (
 		<Window
 			pos={{ x: 25, y: 65 }}
 			tooltip="this tooltip fits well with the theme"
 			title="What I work with"
-			buttons={[windowButtons.help, windowButtons.hide]}
+			buttons={[WindowButtonsEnum.help, WindowButtonsEnum.hide]}
 		>
 			<ul className="tree-view">
 				<li>
