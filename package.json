@@ -29,7 +29,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "python3 create_list_md_file.py && cp src/components/app-ads/app-ads.txt build/ && cp -r blog-md/ build/blog-md && react-scripts build",
+    "build": "python3 create_list_md_file.py && cp src/components/app-ads/app-ads.txt build/ && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

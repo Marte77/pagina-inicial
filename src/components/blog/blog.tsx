@@ -13,11 +13,12 @@ type BlogFileProps = {
 }
 
 function BlogList(props: BlogListProps){
+    const navigate = useNavigate();
     return (
         <>
-            {props.list?.map(function(val, index,){
+            {props.list?.map(function(val){
                 return (
-                    <div>
+                    <div onClick={()=>navigate("/blog/"+val)} key={val.slice(0,6)[0]}>
                         {val}
                         <br/>
                     </div>
@@ -56,7 +57,11 @@ export function Blog(){
     useEffect(()=>{
         async function getLista()  {
             try {
-                let res = await axios.get(mainURL+'list.md')
+                let res = await axios.get(mainURL+'list.md', {
+                    headers : {
+                        "Accept": "text/plain",
+                    }
+                })
                 let r = res.data.split('\n')
                 setList(r)
             } catch (error) {
@@ -77,10 +82,10 @@ export function Blog(){
             <div className="title-bar-controls">
                 <button aria-label="Close" onClick={handleClick}></button>
             </div>
-            {
-                name === undefined ?
-                <BlogList list={pagesList}/> : <BlogFile name={name}/>
-            }
         </div>
+        {
+            name === undefined ?
+            <BlogList list={pagesList}/> : <BlogFile name={name}/>
+        }
     </>)
 }
