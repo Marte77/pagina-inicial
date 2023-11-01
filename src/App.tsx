@@ -1,5 +1,4 @@
-import "./App.css";
-import "98.css";
+import styles from "./App.module.css";
 
 import { isMobile } from "react-device-detect";
 import { SnackbarWrapper } from "./components/main-page/snackbarWrapper";
@@ -25,24 +24,23 @@ function closeTab(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
 function App() {
   const audio = new Audio(spamton_cropped)
   const navigate = useNavigate();
-
   const handleClick = () => {
       navigate("/blog");
   }
   return (
     <div>
-      <div className="title-bar inactive">
+      <div className={`${styles["title-bar"]} ${styles["inactive"]}`}>
         <div className="title-bar-text">martinho tm - resumo</div>
         {
           !isMobile &&
           <img alt="under_construction" src={under_construction}/>
         }
-        <div className="title-bar-controls">
+        <div className={styles["title-bar-controls"]}>
           <button aria-label="Help" onClick={handleClick}></button>
           <button aria-label="Close" onClick={closeTab}></button>
         </div>
       </div>
-      <div className="App" style={{backgroundImage:bliss}}>
+      <div className={styles.App} style={{backgroundImage:bliss}}>
         {/*<header className="App-header">martinho</header>*/}
         {
           isMobile && 

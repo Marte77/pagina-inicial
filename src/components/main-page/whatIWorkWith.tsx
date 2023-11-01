@@ -1,7 +1,7 @@
 import { ExpandableSection } from "./expandableSection";
 import { Window } from "./window";
 import { WindowButtonsEnum } from "./windowButtonsEnum";
-
+import styles from "../../App.module.css";
 type WhatIWorkWithProps = {}
 
 export function WhatIWorkWith(props: WhatIWorkWithProps) {
@@ -12,7 +12,7 @@ export function WhatIWorkWith(props: WhatIWorkWithProps) {
 			title="What I work with"
 			buttons={[WindowButtonsEnum.help, WindowButtonsEnum.hide]}
 		>
-			<ul className="tree-view">
+			<ul className={styles["tree-view"]}>
 				<li>
 					<ExpandableSection
 						title="Work experience"

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Window } from "./window";
 import { WindowButtonsEnum } from "./windowButtonsEnum";
+import styles from "../../App.module.css";
 
 type MobileWarningProps = {}
 
@@ -13,13 +14,13 @@ export function MobileWarning(props: MobileWarningProps) {
 			buttons={[WindowButtonsEnum.close]}
 			pos={{ x: -200, y: -250 }}
 		>
-			<ul className="tree-view">
-				<li className="tree-view">
+			<ul className={styles["tree-view"]}>
+				<li className={styles["tree-view"]}>
 					This website is better viewed in a desktop browser!
 				</li>
 			</ul>
 			<section
-				className="field-row"
+				className={styles["field-row"]}
 				style={{ justifyContent: "flex-end" }}
 			>
 				<button onClick={() => setHidden(true)}>

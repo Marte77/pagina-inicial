@@ -1,14 +1,15 @@
 import { Window } from "./window";
 import github from "../../images/github.svg";
 import linkedin from "../../images/linkedin.png";
+import styles from "../../App.module.css";
 
 type SocialsProps = {}
 
 export function Socials(props: SocialsProps) {
 	return (
 		<Window title="Socials" pos={{ x: -500, y: 100 }}>
-			<ul className="tree-view">
-				<li className="tree-view">
+			<ul className={styles["tree-view"]}>
+				<li className={styles["tree-view"]}>
 					<a
 						href="https://github.com/Marte77/"
 						target="_blank"

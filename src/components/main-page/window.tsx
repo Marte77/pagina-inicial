@@ -3,6 +3,7 @@ import { SyntheticEvent, useRef, useState } from "react";
 import { isMobile } from "react-device-detect";
 import Draggable from "react-draggable";
 import { WindowButtonsEnum } from "./windowButtonsEnum";
+import styles from "../../App.module.css";
 
 const getRandom = (min: number, max: number) =>
 	Math.floor(Math.random() * (max - min + 1) + min);
@@ -125,16 +126,15 @@ export function Window(props: WindowProps) : JSX.Element {
 			}}
 			bounds="parent"
 			disabled={isMobile}
-			handle=".title-bar"
 		>
 			<div ref={nodeRef}>
-				<div className="window">
-					<div className="title-bar" style={cursorStyle} >
-						<div style={cursorStyle} className="title-bar-text">{props.title ?? ""}</div>
-						<div style={cursorStyle} className="title-bar-controls">{buttons}</div>
+				<div className={styles["window"]}>
+					<div className={styles["title-bar"]} style={cursorStyle} >
+						<div style={cursorStyle} className={styles["title-bar-text"]}>{props.title ?? ""}</div>
+						<div style={cursorStyle} className={styles["title-bar-controls"]}>{buttons}</div>
 					</div>
 					{isWindowOpen && (
-						<div className="window-body" style={style}>
+						<div className={styles["window-body"]} style={style}>
 							{props.children}
 						</div>
 					)}
