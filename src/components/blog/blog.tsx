@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import ReactMarkdown from "react-markdown";
+import MarkdownPreview from '@uiw/react-markdown-preview';
 const mainURL = 'https://raw.githubusercontent.com/Marte77/pagina-inicial/main/blog-md/'
 const mainURLFile = mainURL + '/list/'
 
@@ -42,11 +42,9 @@ function BlogFile(props: BlogFileProps){
         getFile()
     }, [props.name])
     return (
-        <>
-        <ReactMarkdown>
-            {content === undefined ? "" : content}
-        </ReactMarkdown>
-        </>
+        <div data-color-mode="light">
+            <MarkdownPreview source={content}/>
+        </div>
     )
 }
 
@@ -70,6 +68,11 @@ export function Blog(){
         }
         if (name === undefined)
             getLista()
+        //let x = document.styleSheets.item(2)
+        //if (x !== null)
+        //    for (let i = 0; i < x.cssRules.length; i++) {
+        //        x.deleteRule(i)
+        //    }
     }, [name])
 
     const handleClick = () => {
@@ -77,15 +80,28 @@ export function Blog(){
     }
     return (
     <>
-        <div className="title-bar inactive">
-            <div className="title-bar-text">{name}</div>
-            <div className="title-bar-controls">
-                <button aria-label="Close" onClick={handleClick}></button>
-            </div>
-        </div>
+        
         {
             name === undefined ?
-            <BlogList list={pagesList}/> : <BlogFile name={name}/>
+            <div>
+                <div className="title-bar inactive">
+                    <div className="title-bar-text">List</div>
+                    <div className="title-bar-controls">
+                        <button aria-label="Close" onClick={handleClick}></button>
+                    </div>
+                </div>
+                <BlogList list={pagesList}/>
+            </div>
+            : 
+            <div>
+                <div className="title-bar inactive">
+                    <div className="title-bar-text">{name}</div>
+                    <div className="title-bar-controls">
+                        <button aria-label="Close" onClick={handleClick}></button>
+                    </div>
+                </div>
+                <BlogFile name={name}/>
+            </div>
         }
     </>)
 }
