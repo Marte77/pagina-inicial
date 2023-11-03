@@ -4,7 +4,8 @@ import axios from "axios";
 import MarkdownPreview from '@uiw/react-markdown-preview';
 import styles from "../../App.module.css";
 
-const mainURL = 'https://raw.githubusercontent.com/Marte77/pagina-inicial/main/blog-md/'
+const githubRaw = 'https://raw.githubusercontent.com/projetosinuteismarte77/blogs-md/';
+const mainURL = githubRaw+'main/blog-md/'
 const mainURLFile = mainURL + '/list/'
 
 type BlogListProps = {
@@ -45,7 +46,7 @@ function BlogFile(props: BlogFileProps){
     }, [props.name])
     return (
         <div>
-            <MarkdownPreview source={content}/>
+            <MarkdownPreview style={{paddingLeft: '4%', paddingRight: '4%'}} source={content}/>
         </div>
     )
 }
@@ -70,11 +71,6 @@ export function Blog(){
         }
         if (name === undefined)
             getLista()
-        //let x = document.styleSheets.item(2)
-        //if (x !== null)
-        //    for (let i = 0; i < x.cssRules.length; i++) {
-        //        x.deleteRule(i)
-        //    }
     }, [name])
 
     const handleClick = () => {
