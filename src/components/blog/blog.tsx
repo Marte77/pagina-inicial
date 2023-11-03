@@ -2,6 +2,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import MarkdownPreview from '@uiw/react-markdown-preview';
+import styles from "../../App.module.css";
+
 const mainURL = 'https://raw.githubusercontent.com/Marte77/pagina-inicial/main/blog-md/'
 const mainURLFile = mainURL + '/list/'
 
@@ -42,7 +44,7 @@ function BlogFile(props: BlogFileProps){
         getFile()
     }, [props.name])
     return (
-        <div data-color-mode="light">
+        <div>
             <MarkdownPreview source={content}/>
         </div>
     )
@@ -80,28 +82,16 @@ export function Blog(){
     }
     return (
     <>
-        
-        {
-            name === undefined ?
-            <div>
-                <div className="title-bar inactive">
-                    <div className="title-bar-text">List</div>
-                    <div className="title-bar-controls">
-                        <button aria-label="Close" onClick={handleClick}></button>
-                    </div>
+        <div>
+            {
+            <div className={`${styles["title-bar"]} ${styles["inactive"]}`}>
+                <div className={styles["title-bar-text"]}>{name === undefined ? "List" : name}</div>
+                <div className={styles["title-bar-controls"]}>
+                    <button className={styles["button98"]} aria-label="Close" onClick={handleClick}></button>
                 </div>
-                <BlogList list={pagesList}/>
             </div>
-            : 
-            <div>
-                <div className="title-bar inactive">
-                    <div className="title-bar-text">{name}</div>
-                    <div className="title-bar-controls">
-                        <button aria-label="Close" onClick={handleClick}></button>
-                    </div>
-                </div>
-                <BlogFile name={name}/>
-            </div>
-        }
+            }
+        </div>
+        {name === undefined ? <BlogList list={pagesList}/> : <BlogFile name={name}/>}
     </>)
 }

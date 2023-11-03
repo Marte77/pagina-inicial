@@ -4,6 +4,7 @@ import { isMobile } from "react-device-detect";
 import Draggable from "react-draggable";
 import { WindowButtonsEnum } from "./windowButtonsEnum";
 import styles from "../../App.module.css";
+import { Button98 } from "../html_tags/html";
 
 const getRandom = (min: number, max: number) =>
 	Math.floor(Math.random() * (max - min + 1) + min);
@@ -46,11 +47,11 @@ export function Window(props: WindowProps) : JSX.Element {
 		for (let btn of props.buttons) {
 			if (btn === WindowButtonsEnum.hide) {
 				buttons.push(
-					<button
+					<Button98
 						key={btn}
 						onClick={() => setWindowOpen(!isWindowOpen)}
 						aria-label="Minimize"
-					></button>
+					></Button98>
 				);
 			} else if (btn === WindowButtonsEnum.help) {
 				if (tooltip !== undefined) {
@@ -72,29 +73,29 @@ export function Window(props: WindowProps) : JSX.Element {
 									onClose={handleTooltipClose}
 									arrow
 								>
-									<button
+									<Button98
 										aria-label={btn}
 										onClick={handleTooltipOpen}
-									></button>
+									></Button98>
 								</Tooltip>
 							</div>
 						</ClickAwayListener>
 					);
 				} else {
-					buttons.push(<button aria-label={btn} key={btn}></button>);
+					buttons.push(<Button98 aria-label={btn} key={btn}></Button98>);
 				}
 			} else if (btn === WindowButtonsEnum.close) {
 				if (props.onClose)
 					buttons.push(
-						<button
+						<Button98
 							key={btn}
 							aria-label={btn}
 							onClick={props.onClose}
-						></button>
+						></Button98>
 					);
-				else buttons.push(<button key={btn} aria-label={btn}></button>);
+				else buttons.push(<Button98 key={btn} aria-label={btn}></Button98>);
 			} else {
-				buttons.push(<button key={btn} aria-label={btn}></button>);
+				buttons.push(<Button98 key={btn} aria-label={btn}></Button98>);
 			}
 		}
 	let pos = props.pos

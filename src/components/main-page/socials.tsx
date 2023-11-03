@@ -2,15 +2,16 @@ import { Window } from "./window";
 import github from "../../images/github.svg";
 import linkedin from "../../images/linkedin.png";
 import styles from "../../App.module.css";
+import { Li98, Ul98, A98 } from "../html_tags/html";
 
 type SocialsProps = {}
 
 export function Socials(props: SocialsProps) {
 	return (
 		<Window title="Socials" pos={{ x: -500, y: 100 }}>
-			<ul className={styles["tree-view"]}>
-				<li className={styles["tree-view"]}>
-					<a
+			<Ul98 className={styles["tree-view"]}>
+				<Li98 className={styles["tree-view"]}>
+					<A98
 						href="https://github.com/Marte77/"
 						target="_blank"
 						rel="noopener noreferrer"
@@ -21,9 +22,9 @@ export function Socials(props: SocialsProps) {
 							height={30}
 							alt="github logo"
 						/>
-					</a>
+					</A98>
 					&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-					<a
+					<A98
 						href="https://www.linkedin.com/in/martinhotav/"
 						target="_blank"
 						rel="noopener noreferrer"
@@ -38,9 +39,9 @@ export function Socials(props: SocialsProps) {
 								filter: "brightness(0)",
 							}}
 						/>
-					</a>
-				</li>
-			</ul>
+					</A98>
+				</Li98>
+			</Ul98>
 		</Window>
 	);
 }

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Window } from "./window";
 import { WindowButtonsEnum } from "./windowButtonsEnum";
 import styles from "../../App.module.css";
+import { Button98, Li98, Ul98 } from "../html_tags/html";
 
 type MobileWarningProps = {}
 
@@ -14,18 +15,18 @@ export function MobileWarning(props: MobileWarningProps) {
 			buttons={[WindowButtonsEnum.close]}
 			pos={{ x: -200, y: -250 }}
 		>
-			<ul className={styles["tree-view"]}>
-				<li className={styles["tree-view"]}>
+			<Ul98 className={styles["tree-view"]}>
+				<Li98 className={styles["tree-view"]}>
 					This website is better viewed in a desktop browser!
-				</li>
-			</ul>
+				</Li98>
+			</Ul98>
 			<section
 				className={styles["field-row"]}
 				style={{ justifyContent: "flex-end" }}
 			>
-				<button onClick={() => setHidden(true)}>
+				<Button98 onClick={() => setHidden(true)}>
 					I've been warned
-				</button>
+				</Button98>
 			</section>
 		</Window>
 	) : (

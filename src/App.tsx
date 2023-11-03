@@ -14,6 +14,7 @@ import spamton_cropped from "./audio/spamton_cropped.mp3"
 import bliss from './images/bliss.png'
 
 import under_construction from './images/under_construction.png'
+import { Button98 } from "./components/html_tags/html";
 
 function closeTab(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
   window.opener = null;
@@ -28,16 +29,21 @@ function App() {
       navigate("/blog");
   }
   return (
-    <div>
+    <div style={{
+      margin: 0,
+      fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen','Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',sans-serif",
+      WebkitFontSmoothing: "antialiased",
+      MozOsxFontSmoothing: "grayscale"
+    }} className={`${styles["body98"]}`}>
       <div className={`${styles["title-bar"]} ${styles["inactive"]}`}>
-        <div className="title-bar-text">martinho tm - resumo</div>
+        <div className={styles["title-bar-text"]}>martinho tm - resumo</div>
         {
           !isMobile &&
           <img alt="under_construction" src={under_construction}/>
         }
         <div className={styles["title-bar-controls"]}>
-          <button aria-label="Help" onClick={handleClick}></button>
-          <button aria-label="Close" onClick={closeTab}></button>
+          <Button98 aria-label="Help" onClick={handleClick}></Button98>
+          <Button98 aria-label="Close" onClick={closeTab}></Button98>
         </div>
       </div>
       <div className={styles.App} style={{backgroundImage:bliss}}>

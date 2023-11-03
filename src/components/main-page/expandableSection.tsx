@@ -1,3 +1,5 @@
+import { Details98, Li98, Summary98, Ul98 } from "../html_tags/html";
+
 type ExpandableSectionProps = {
 	title: string | Array<string | JSX.Element>,
 	arrayOfContents: Array<string> | Array<JSX.Element>
@@ -11,12 +13,12 @@ export function ExpandableSection(props: ExpandableSectionProps) {
 	let conteudo: Array<React.ReactNode> = [];
 	arrayOfContents.forEach(function (content, index) {
 		let key = typeof content === "string" ? content : content.key;
-		conteudo.push(<li key={key}>{content}</li>);
+		conteudo.push(<Li98 key={key}>{content}</Li98>);
 	});
 	return (
-		<details open={open}>
-			<summary>{title}</summary>
-			<ul>{conteudo}</ul>
-		</details>
+		<Details98 open={open}>
+			<Summary98>{title}</Summary98>
+			<Ul98>{conteudo}</Ul98>
+		</Details98>
 	);
 }

@@ -2,6 +2,7 @@ import { ExpandableSection } from "./expandableSection";
 import { Window } from "./window";
 import { WindowButtonsEnum } from "./windowButtonsEnum";
 import styles from "../../App.module.css";
+import { Ul98, Li98 } from "../html_tags/html";
 type WhatIWorkWithProps = {}
 
 export function WhatIWorkWith(props: WhatIWorkWithProps) {
@@ -12,8 +13,8 @@ export function WhatIWorkWith(props: WhatIWorkWithProps) {
 			title="What I work with"
 			buttons={[WindowButtonsEnum.help, WindowButtonsEnum.hide]}
 		>
-			<ul className={styles["tree-view"]}>
-				<li>
+			<Ul98 className={styles["tree-view"]}>
+				<Li98>
 					<ExpandableSection
 						title="Work experience"
 						arrayOfContents={[
@@ -47,8 +48,8 @@ export function WhatIWorkWith(props: WhatIWorkWithProps) {
 							"decent at using linux",
 						]}
 					/>
-				</li>
-			</ul>
+				</Li98>
+			</Ul98>
 		</Window>
 	);
 }
