@@ -15,11 +15,10 @@ const Li98: React.FC<any> = ({ ...props}) => {
     )
 }
 const Button98: React.FC<any> = React.forwardRef( (props, ref) => {
-    console.log(props, `${styles["button98"]} ${props.className}`)
     let classname = props.className === undefined ? `${styles["button98"]}` : `${styles["button98"]} ${props.className}`
     let {className, ...proops} = props
     return (
-        <button ref={ref}className={classname} {...proops}></button>
+        <button ref={ref}className={classname} {...proops}>{props.children}</button>
     )
 });
 const Label98: React.FC<any> = ({ ...props}) => {
