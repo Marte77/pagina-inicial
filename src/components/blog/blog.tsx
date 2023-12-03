@@ -29,6 +29,7 @@ type BlogFileProps = {
 	name: string;
 };
 /// min and max included
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function randomIntFromInterval(min: number, max: number): number {
 	return Math.floor(Math.random() * (max - min + 1) + min);
 }
@@ -39,19 +40,17 @@ function BlogList(props: BlogListProps) {
 	if (docLoc.endsWith("/")) docLoc = docLoc.substring(0, docLoc.length - 1);
 	return (
 		<md-list>
-			{props.list?.map(function (val) {
+			{props.list?.map(function (val2:string) {
+				let val: string = val2.split("-").join(" ").split(".md")[0];
 				return (
 					<div
 						key={
-							val.slice(
-								0,
-								randomIntFromInterval(0, val.length)
-							)[0] + Math.random()
+							val
 						}
 					>
 						<md-list-item
-							href={`${docLoc}/${val}`}
-							onClick={() => navigate("/blog/" + val)}
+							href={`${docLoc}/${val2}`}
+							onClick={() => navigate("/blog/" + val2)}
 						>
 							{val}
 							<md-ripple />
@@ -149,7 +148,7 @@ export function Blog() {
 			<div>
 				<div className={`${styles["title-bar"]} ${styles["inactive"]}`}>
 					<div className={styles["title-bar-text"]}>
-						{name === undefined ? "List" : name}
+						{name ?? "List"}
 					</div>
 					<div className={styles["title-bar-controls"]}>
 						<Button98
