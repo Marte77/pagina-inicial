@@ -22,7 +22,7 @@ function closeTab(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
   window.close();
 }
 
-function App() {
+export function App() {
   const audio = new Audio(spamton_cropped)
   const navigate = useNavigate();
   const handleClick = () => {
@@ -61,6 +61,7 @@ function App() {
         <Socials/>
         <MusicPlayer music={audio}/>
         <Buttons88x31/>
+        
       </div>
     </div>
   );

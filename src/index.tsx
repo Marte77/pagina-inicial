@@ -9,7 +9,7 @@ import { AppAds } from './components/app-ads/appads';
 import { Blog } from './components/blog/blog';
 const root = ReactDOM.createRoot(document.getElementById('root')!);
 
-const router = createBrowserRouter([
+export const router = createBrowserRouter([
   {
     path:'/',
     element:<App/>
