@@ -5,12 +5,14 @@ import Draggable from "react-draggable";
 import { WindowButtonsEnum } from "./windowButtonsEnum";
 import styles from "../../App.module.css";
 import { Button98 } from "../html_tags/html";
+import zIndex from "@mui/material/styles/zIndex";
 
 const getRandom = (min: number, max: number) =>
 	Math.floor(Math.random() * (max - min + 1) + min);
 
 declare global {
 	interface Window {
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		safari:any
 	}
 }
@@ -128,7 +130,8 @@ export function Window(props: WindowProps) : JSX.Element {
 			bounds="parent"
 			disabled={isMobile}
 		>
-			<div ref={nodeRef}>
+			<div ref={nodeRef}
+			style={{zIndex:2,...style}}>
 				<div className={styles["window"]}>
 					<div className={styles["title-bar"]} style={cursorStyle} >
 						<div style={cursorStyle} className={styles["title-bar-text"]}>{props.title ?? ""}</div>

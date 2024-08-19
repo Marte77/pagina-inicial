@@ -10,10 +10,10 @@ import { Buttons88x31 } from "./components/main-page/88x31buttons";
 import { MusicPlayer } from "./components/main-page/musicPlayer";
 import { useNavigate } from "react-router-dom";
 
-import spamton_cropped from "./audio/spamton_cropped.mp3"
-import bliss from './images/bliss.png'
+import spamton_cropped from '/audio/spamton_cropped.mp3'
+import bliss from '/images/bliss.png'
 
-import under_construction from './images/under_construction.png'
+import under_construction from '/images/under_construction.png'
 import { Button98 } from "./components/html_tags/html";
 
 function closeTab(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
@@ -56,10 +56,10 @@ export function App() {
           !isMobile && 
           <SnackbarWrapper message="Try dragging the windows!"/>
         }
-        <WhatIWorkWith />
-        <Bio/>
-        <Socials/>
-        <MusicPlayer music={audio}/>
+        <WhatIWorkWith style={{zIndex:9}} />
+        <Bio style={{zIndex:9}}/>
+        <Socials style={{zIndex:8}}/>
+        <MusicPlayer music={audio} style={{zIndex:8}}/>
         <Buttons88x31/>
         
       </div>

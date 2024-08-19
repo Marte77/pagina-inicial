@@ -1,13 +1,6 @@
-/* thanks to https://stackoverflow.com/a/69000885 */
-.container {
-    margin: 0 auto;
-    text-align:center;
-    overflow: auto;
-    white-space: nowrap;
-    bottom: 0;
-    position: fixed;
-}
-
-.box {
-    display: inline-block;
+.gridcontainer {
+    display: grid;
+    grid-auto-flow: column; /*define que cada nova row da grid deve ser coluna*/
+    overflow-x:scroll;
+    grid-auto-columns: max-content;
 }

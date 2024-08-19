@@ -3,7 +3,9 @@ import { Window } from "./window";
 import { WindowButtonsEnum } from "./windowButtonsEnum";
 import styles from "../../App.module.css";
 import { Ul98, Li98 } from "../html_tags/html";
-type WhatIWorkWithProps = {}
+type WhatIWorkWithProps = {
+	style?: React.CSSProperties,
+}
 
 export function WhatIWorkWith(props: WhatIWorkWithProps) {
 	return (
@@ -12,6 +14,7 @@ export function WhatIWorkWith(props: WhatIWorkWithProps) {
 			tooltip="this tooltip fits well with the theme"
 			title="What I work with"
 			buttons={[WindowButtonsEnum.help, WindowButtonsEnum.hide]}
+			style={props.style}
 		>
 			<Ul98 className={styles["tree-view"]}>
 				<Li98>

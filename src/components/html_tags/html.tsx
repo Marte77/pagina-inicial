@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react'
 import styles from '../../App.module.css';
 const Ul98: React.FC<any> = ({ ...props}) => {

@@ -1,14 +1,17 @@
 import { Window } from "./window";
-import github from "../../images/github.svg";
-import linkedin from "../../images/linkedin.png";
+import github from "/images/github.svg";
+import linkedin from "/images/linkedin.png"
 import styles from "../../App.module.css";
 import { Li98, Ul98, A98 } from "../html_tags/html";
 
-type SocialsProps = {}
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
+type SocialsProps = {
+	style?: React.CSSProperties,
+}
 
 export function Socials(props: SocialsProps) {
 	return (
-		<Window title="Socials" pos={{ x: -500, y: 100 }}>
+		<Window title="Socials" pos={{ x: -500, y: 100 }} style={props.style}>
 			<Ul98 className={styles["tree-view"]}>
 				<Li98 className={styles["tree-view"]}>
 					<A98
