@@ -7,12 +7,12 @@ type ExpandableSectionProps = {
 }
 
 export function ExpandableSection(props: ExpandableSectionProps) {
-	let title = props.title,
+	const title = props.title,
 		arrayOfContents = props.arrayOfContents;
-	let open = props.open ?? true;
-	let conteudo: Array<React.ReactNode> = [];
-	arrayOfContents.forEach(function (content, index) {
-		let key = typeof content === "string" ? content : content.key;
+	const open = props.open ?? true;
+	const conteudo: Array<React.ReactNode> = [];
+	arrayOfContents.forEach(function (content) {
+		const key = typeof content === "string" ? content : content.key;
 		conteudo.push(<Li98 key={key}>{content}</Li98>);
 	});
 	return (

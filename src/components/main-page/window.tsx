@@ -1,11 +1,10 @@
 import { ClickAwayListener, Tooltip } from "@mui/material";
-import { SyntheticEvent, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { isMobile } from "react-device-detect";
 import Draggable from "react-draggable";
 import { WindowButtonsEnum } from "./windowButtonsEnum";
 import styles from "../../App.module.css";
 import { Button98 } from "../html_tags/html";
-import zIndex from "@mui/material/styles/zIndex";
 
 const getRandom = (min: number, max: number) =>
 	Math.floor(Math.random() * (max - min + 1) + min);
@@ -30,9 +29,9 @@ type WindowProps = {
 
 export function Window(props: WindowProps) : JSX.Element {
 	const nodeRef = useRef(null);
-	let [isWindowOpen, setWindowOpen] = useState(true);
-	let [openTooltip, setOpenTooltip] = useState(false);
-	const handleTooltipClose = (e: Event | SyntheticEvent<Element, Event>) => {
+	const [isWindowOpen, setWindowOpen] = useState(true);
+	const [openTooltip, setOpenTooltip] = useState(false);
+	const handleTooltipClose = () => {
 		setOpenTooltip(false);
 		if (window.safari !== undefined) {
 			console.log(
@@ -40,13 +39,13 @@ export function Window(props: WindowProps) : JSX.Element {
 			);
 		}
 	};
-	const handleTooltipOpen = (e: Event | SyntheticEvent<Element, Event>) => {
+	const handleTooltipOpen = () => {
 		setOpenTooltip(true);
 	};
-	let buttons = [];
-	let tooltip = props.tooltip;
+	const buttons = [];
+	const tooltip = props.tooltip;
 	if (props.buttons)
-		for (let btn of props.buttons) {
+		for (const btn of props.buttons) {
 			if (btn === WindowButtonsEnum.hide) {
 				buttons.push(
 					<Button98
@@ -111,15 +110,15 @@ export function Window(props: WindowProps) : JSX.Element {
 		pos.x = 0;
 		pos.y = 0;
 	} else {
-		let x = window.screen.availWidth / 2;
-		let y = window.screen.availHeight / 2;
-		let val = 500;
+		const x = window.screen.availWidth / 2;
+		const y = window.screen.availHeight / 2;
+		const val = 500;
 		pos.x = getRandom(-(x - val), x - val);
 		pos.y = getRandom(-(y - val), y - val);
 	}
-	let style = props.style ?? {};
+	const style = props.style ?? {};
 	style["overflow"] = "auto";
-	let cursorStyle = {cursor:"grab"}
+	const cursorStyle = {cursor:"grab"}
 	return (
 		<Draggable
 			nodeRef={nodeRef}

@@ -9,14 +9,14 @@ import { Socials } from "./components/main-page/socials";
 import { Buttons88x31 } from "./components/main-page/88x31buttons";
 import { MusicPlayer } from "./components/main-page/musicPlayer";
 import { useNavigate } from "react-router-dom";
+import { Button98 } from "./components/html_tags/html";
 
 import spamton_cropped from '/audio/spamton_cropped.mp3'
 import bliss from '/images/bliss.png'
 
 import under_construction from '/images/under_construction.png'
-import { Button98 } from "./components/html_tags/html";
 
-function closeTab(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+function closeTab() {
   window.opener = null;
   window.open("", "_self");
   window.close();

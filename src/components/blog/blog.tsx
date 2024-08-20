@@ -29,10 +29,9 @@ type BlogFileProps = {
 	name: string;
 };
 /// min and max included
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function randomIntFromInterval(min: number, max: number): number {
+/*function randomIntFromInterval(min: number, max: number): number {
 	return Math.floor(Math.random() * (max - min + 1) + min);
-}
+}*/
 
 function BlogList(props: BlogListProps) {
 	const navigate = useNavigate();
@@ -41,7 +40,7 @@ function BlogList(props: BlogListProps) {
 	return (
 		<md-list>
 			{props.list?.map(function (val2:string) {
-				let val: string = val2.split("-").join(" ").split(".md")[0];
+				const val = val2.split("-").join(" ").split(".md")[0];
 				return (
 					<div
 						key={
@@ -68,7 +67,7 @@ function BlogFile(props: BlogFileProps) {
 	useEffect(() => {
 		async function getFile() {
 			try {
-				let res = await axios.get(mainURLFile + props.name);
+				const res = await axios.get(mainURLFile + props.name);
 				setContent(res.data);
 			} catch (error) {
 				console.error(error);

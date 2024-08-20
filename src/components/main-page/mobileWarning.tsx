@@ -4,9 +4,11 @@ import { WindowButtonsEnum } from "./windowButtonsEnum";
 import styles from "../../App.module.css";
 import { Button98, Li98, Ul98 } from "../html_tags/html";
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 type MobileWarningProps = {}
 
-export function MobileWarning(props: MobileWarningProps) {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export function MobileWarning(_props: MobileWarningProps) {
 	const [isHidden, setHidden] = useState(false);
 	return !isHidden ? (
 		<Window

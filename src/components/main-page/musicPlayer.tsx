@@ -11,7 +11,7 @@ type MusicPlayerProps = {
 export function MusicPlayer(props: MusicPlayerProps){
     const [value, setValue] = useState(0)
     const [hasPlayed, setHasPlayed] = useState(false)
-    let audio = props.music
+    const audio = props.music
     if(audio === undefined) throw Error("No audio set!!")
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setValue(parseInt(e.target.value))
