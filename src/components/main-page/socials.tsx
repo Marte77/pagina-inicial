@@ -28,7 +28,7 @@ export function Socials(props: SocialsProps) {
 					</A98>
 					&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
 					<A98
-						href="https://www.linkedin.com/in/martinhotav/"
+						href="https://www.linkedin.com/in/martetm/"
 						target="_blank"
 						rel="noopener noreferrer"
 					>
