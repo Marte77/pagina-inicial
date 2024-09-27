@@ -1,20 +1,22 @@
 .App {
-  background-color: #6d0175c3/*#282c34*/;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: rgb(0, 0, 0);
-  background-image: url('/images/bliss_high_res.jpeg');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: 100% 100%;
+    background-color: #6d0175c3
+        /*#282c34*/
+    ;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: rgb(0, 0, 0);
+    background-image: url('/images/bliss_high_res.jpeg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
 }
 
 .App-header {
-  text-align: center;
+    text-align: center;
 }
 
 /**

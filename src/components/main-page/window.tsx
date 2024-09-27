@@ -1,7 +1,7 @@
 import { ClickAwayListener, Tooltip } from "@mui/material";
 import { useRef, useState } from "react";
 import { isMobile } from "react-device-detect";
-import Draggable from "react-draggable";
+import Draggable, { PositionOffsetControlPosition } from "react-draggable";
 import { WindowButtonsEnum } from "./windowButtonsEnum";
 import styles from "../../App.module.css";
 import { Button98 } from "../html_tags/html";
@@ -27,9 +27,9 @@ type WindowProps = {
 	children: React.ReactNode 
 }
 
-export function Window(props: WindowProps) : JSX.Element {
+export function Window(props: Readonly<WindowProps>) : JSX.Element {
 	const nodeRef = useRef(null);
-	const [isWindowOpen, setWindowOpen] = useState(true);
+	const [isWindowOpen, setIsWindowOpen] = useState(true);
 	const [openTooltip, setOpenTooltip] = useState(false);
 	const handleTooltipClose = () => {
 		setOpenTooltip(false);
@@ -44,61 +44,7 @@ export function Window(props: WindowProps) : JSX.Element {
 	};
 	const buttons = [];
 	const tooltip = props.tooltip;
-	if (props.buttons)
-		for (const btn of props.buttons) {
-			if (btn === WindowButtonsEnum.hide) {
-				buttons.push(
-					<Button98
-						key={btn}
-						onClick={() => setWindowOpen(!isWindowOpen)}
-						aria-label="Minimize"
-					></Button98>
-				);
-			} else if (btn === WindowButtonsEnum.help) {
-				if (tooltip !== undefined) {
-					buttons.push(
-						<ClickAwayListener
-							key={btn}
-							onClickAway={handleTooltipClose}
-						>
-							<div>
-								<Tooltip
-									PopperProps={{
-										disablePortal: true,
-									}}
-									title={tooltip}
-									disableHoverListener
-									disableFocusListener
-									disableTouchListener
-									open={openTooltip}
-									onClose={handleTooltipClose}
-									arrow
-								>
-									<Button98
-										aria-label={btn}
-										onClick={handleTooltipOpen}
-									></Button98>
-								</Tooltip>
-							</div>
-						</ClickAwayListener>
-					);
-				} else {
-					buttons.push(<Button98 aria-label={btn} key={btn}></Button98>);
-				}
-			} else if (btn === WindowButtonsEnum.close) {
-				if (props.onClose)
-					buttons.push(
-						<Button98
-							key={btn}
-							aria-label={btn}
-							onClick={props.onClose}
-						></Button98>
-					);
-				else buttons.push(<Button98 key={btn} aria-label={btn}></Button98>);
-			} else {
-				buttons.push(<Button98 key={btn} aria-label={btn}></Button98>);
-			}
-		}
+	
 	let pos = props.pos
 	if(pos === undefined){
 		pos = {
@@ -116,9 +62,84 @@ export function Window(props: WindowProps) : JSX.Element {
 		pos.x = getRandom(-(x - val), x - val);
 		pos.y = getRandom(-(y - val), y - val);
 	}
+	if (props.buttons)
+		for (const btn of props.buttons) {
+			switch(btn)
+			{
+				case WindowButtonsEnum.close: {
+					if (props.onClose)
+						buttons.push(
+							<Button98
+								key={btn}
+								aria-label={btn}
+								onClick={props.onClose}
+							></Button98>
+						);
+					else buttons.push(<Button98 key={btn} aria-label={btn}></Button98>);
+					break;
+				}
+				case WindowButtonsEnum.hide: {
+					buttons.push(
+						<Button98
+							key={btn}
+							onClick={() => setIsWindowOpen(!isWindowOpen)}
+							aria-label="Minimize"
+						></Button98>
+					);
+				} break;
+				case WindowButtonsEnum.max: {
+					buttons.push(<Button98 key={btn} aria-label={btn}></Button98>);
+					break;
+				}
+				case WindowButtonsEnum.help: {
+					if (tooltip !== undefined) {
+						buttons.push(
+							<ClickAwayListener
+								key={btn}
+								onClickAway={handleTooltipClose}
+							>
+								<div>
+									<Tooltip
+										PopperProps={{
+											disablePortal: true,
+										}}
+										title={tooltip}
+										disableHoverListener
+										disableFocusListener
+										disableTouchListener
+										open={openTooltip}
+										onClose={handleTooltipClose}
+										arrow
+									>
+										<Button98
+											aria-label={btn}
+											onClick={handleTooltipOpen}
+										></Button98>
+									</Tooltip>
+								</div>
+							</ClickAwayListener>
+						);
+					} else {
+						buttons.push(<Button98 aria-label={btn} key={btn}></Button98>);
+					}
+					break;
+				}
+			}
+		}
 	const style = props.style ?? {};
-	style["overflow"] = "auto";
+	//style["overflow"] = "auto";
 	const cursorStyle = {cursor:"grab"}
+	let titleClassName = styles["title-bar-text"]
+	let posOffset: PositionOffsetControlPosition | undefined = undefined
+	if (props.title !== undefined && props.title.toLowerCase().indexOf("conexoes")>-1) {
+		titleClassName = titleClassName.concat(" rainbowa")
+		if (!isMobile) {
+			posOffset = {
+				x:'-42%',
+				y:'-85%'
+			}
+		}
+	}
 	return (
 		<Draggable
 			nodeRef={nodeRef}
@@ -126,14 +147,16 @@ export function Window(props: WindowProps) : JSX.Element {
 				x: pos.x,
 				y: pos.y,
 			}}
+			positionOffset={posOffset}
 			bounds="parent"
 			disabled={isMobile}
+			onStop={(ev,data)=>{console.log(data, ev)}}
 		>
 			<div ref={nodeRef}
 			style={{zIndex:2,...style}}>
 				<div className={styles["window"]}>
 					<div className={styles["title-bar"]} style={cursorStyle} >
-						<div style={cursorStyle} className={styles["title-bar-text"]}>{props.title ?? ""}</div>
+						<div style={cursorStyle} className={titleClassName}>{props.title ?? ""}</div>
 						<div style={cursorStyle} className={styles["title-bar-controls"]}>{buttons}</div>
 					</div>
 					{isWindowOpen && (

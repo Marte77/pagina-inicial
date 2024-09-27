@@ -17,6 +17,68 @@ body {
     monospace;
 }*/
 
+.rainbowa{
+  display: inline-block;
+  background: linear-gradient(-90deg in hsl longer hue, #ff002f, red);/*linear-gradient(45deg,rgb(255,0,0),rgb(255, 119, 0),rgb(255, 234, 0),rgb(166, 255, 0),rgb(26, 255, 0),rgb(0, 255, 187),rgb(0, 213, 255),rgb(0, 8, 255),rgb(179, 0, 255),rgb(255, 0, 251),rgb(255, 0, 119),);*/
+  /*background: linear-gradient(90deg to right, red 20%, orange 20% 40%,yellow 40% 60%,
+  rgb(0, 255, 0) 60% 80%,
+  rgb(0, 255, 238) 80%);*//*linear-gradient(45deg,rgb(255,0,0),rgb(255, 119, 0),rgb(255, 234, 0),rgb(166, 255, 0),rgb(26, 255, 0),rgb(0, 255, 187),rgb(0, 213, 255),rgb(0, 8, 255),rgb(179, 0, 255),rgb(255, 0, 251),rgb(255, 0, 119),);*/
+  background-size: 700% 700%;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: grad 2.5s linear infinite;
+}
+
+@keyframes grad{
+0%{
+  background-position:100% 50%
+}to{background-position:0% 50%
+}
+}
+
+
+.rainbow{
+  animation: rainbow 2s linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes rainbow{
+  100%,0%{
+      color: rgb(255,0,0);
+  }
+  8%{
+      color: rgb(255,127,0);
+  }
+  16%{
+      color: rgb(255,255,0);
+  }
+  25%{
+      color: rgb(127,255,0);
+  }
+  33%{
+      color: rgb(0,255,0);
+  }
+  41%{
+      color: rgb(0,255,127);
+  }
+  50%{
+      color: rgb(0,255,255);
+  }
+  58%{
+      color: rgb(0,127,255);
+  }
+  66%{
+      color: rgb(0,0,255);
+  }
+  75%{
+      color: rgb(127,0,255);
+  }
+  83%{
+      color: rgb(255,0,255);
+  }
+}
 summary {
   cursor: pointer;
 }

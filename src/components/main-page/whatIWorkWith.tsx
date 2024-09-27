@@ -7,7 +7,7 @@ type WhatIWorkWithProps = {
 	style?: React.CSSProperties,
 }
 
-export function WhatIWorkWith(props: WhatIWorkWithProps) {
+export function WhatIWorkWith(props: Readonly<WhatIWorkWithProps>) {
 	return (
 		<Window
 			pos={{ x: 25, y: 65 }}

@@ -9,12 +9,14 @@ import { Socials } from "./components/main-page/socials";
 import { Buttons88x31 } from "./components/main-page/88x31buttons";
 import { MusicPlayer } from "./components/main-page/musicPlayer";
 import { useNavigate } from "react-router-dom";
-import { Button98 } from "./components/html_tags/html";
+import { A98, Button98 } from "./components/html_tags/html";
 
 import spamton_cropped from '/audio/spamton_cropped.mp3'
 import bliss from '/images/bliss.png'
 
 import under_construction from '/images/under_construction.png'
+import { Conexoes } from "./components/main-page/conexoes";
+import { useState } from "react";
 
 function closeTab() {
   window.opener = null;
@@ -28,6 +30,7 @@ export function App() {
   const handleClick = () => {
       navigate("/blog");
   }
+  const [removeConexoes, setRemoveConexoes] = useState(false);
   return (
     <div style={{
       margin: 0,
@@ -48,6 +51,15 @@ export function App() {
       </div>
       <div className={styles.App} style={{backgroundImage:bliss}}>
         {/*<header className="App-header">martinho</header>*/}
+        
+        {
+          isMobile &&
+            <A98  className="rainbow" href="https://mvg.lol/#/joguinhos" style={{cursor:'pointer'}}>
+              <Button98 className="rainbow">
+                <span className="rainbow" style={{ fontSize:'16px', fontWeight:'bold'}}>JOGAR CONEXOES</span>
+              </Button98>
+            </A98>
+        }
         {
           isMobile && 
           <MobileWarning/>
@@ -61,12 +73,14 @@ export function App() {
         <Socials style={{zIndex:8}}/>
         <MusicPlayer music={audio} style={{zIndex:8}}/>
         <Buttons88x31/>
-        
+        {
+          !removeConexoes && !isMobile &&
+            <Conexoes onClose={()=>setRemoveConexoes(!removeConexoes)}/>
+        }
       </div>
     </div>
   );
 }
-//<iframe width={400} height={700} src="https://mvg.lol/#/joguinhos"></iframe>
 
 
 
