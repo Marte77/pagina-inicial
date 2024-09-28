@@ -19,7 +19,8 @@ body {
 
 .rainbowa{
   display: inline-block;
-  background: linear-gradient(-90deg in hsl longer hue, #ff002f, red);/*linear-gradient(45deg,rgb(255,0,0),rgb(255, 119, 0),rgb(255, 234, 0),rgb(166, 255, 0),rgb(26, 255, 0),rgb(0, 255, 187),rgb(0, 213, 255),rgb(0, 8, 255),rgb(179, 0, 255),rgb(255, 0, 251),rgb(255, 0, 119),);*/
+  background: linear-gradient(-45deg in oklch shorter hue, deeppink, deeppink,#00ffdb, deeppink, deeppink);
+  /*background: linear-gradient(90deg in hsl longer hue, red, red);*//*linear-gradient(45deg,rgb(255,0,0),rgb(255, 119, 0),rgb(255, 234, 0),rgb(166, 255, 0),rgb(26, 255, 0),rgb(0, 255, 187),rgb(0, 213, 255),rgb(0, 8, 255),rgb(179, 0, 255),rgb(255, 0, 251),rgb(255, 0, 119),);*/
   /*background: linear-gradient(90deg to right, red 20%, orange 20% 40%,yellow 40% 60%,
   rgb(0, 255, 0) 60% 80%,
   rgb(0, 255, 238) 80%);*//*linear-gradient(45deg,rgb(255,0,0),rgb(255, 119, 0),rgb(255, 234, 0),rgb(166, 255, 0),rgb(26, 255, 0),rgb(0, 255, 187),rgb(0, 213, 255),rgb(0, 8, 255),rgb(179, 0, 255),rgb(255, 0, 251),rgb(255, 0, 119),);*/
@@ -28,7 +29,7 @@ body {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: grad 2.5s linear infinite;
+  animation: grad 1.5s linear infinite;
 }
 
 @keyframes grad{

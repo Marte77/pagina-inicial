@@ -53,11 +53,11 @@ export function App() {
         {/*<header className="App-header">martinho</header>*/}
         
         {
-          isMobile &&
-            <A98  className="rainbow" href="https://mvg.lol/#/joguinhos" style={{cursor:'pointer'}}>
-              <Button98 className="rainbow">
-                <span className="rainbow" style={{ fontSize:'16px', fontWeight:'bold'}}>JOGAR CONEXOES</span>
-              </Button98>
+          
+            <A98  className="rainbowa" href="https://mvg.lol/#/joguinhos" style={{cursor:'pointer',fontSize:'16px', fontWeight:'bold'}}>
+              <button style={{fontSize:'16px', fontWeight:'bold'}}>
+                <div className="rainbowa" style={{ }}>JOGAR CONEXOES</div>
+              </button>
             </A98>
         }
         {

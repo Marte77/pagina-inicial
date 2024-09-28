@@ -7,7 +7,7 @@ type BioProps = {
 	style?: React.CSSProperties,
 }
 
-export function Bio(props: BioProps) : JSX.Element{
+export function Bio(props: Readonly<BioProps>) : JSX.Element{
 	const minhaIdade = Math.abs(
 		new Date(new Date().getTime() - new Date("2001/7/7").getTime()).getUTCFullYear() - 1970
 	);
