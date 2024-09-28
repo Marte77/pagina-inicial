@@ -19,7 +19,7 @@ const Button98: React.FC<React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTML
     const classname = props.className === undefined ? `${styles["button98"]}` : `${props.className} ${styles["button98"]}`
     let {className, ...proops} = props
     return (
-        <button ref={ref}className={classname} {...proops}>{props.children}</button>
+        <button ref={ref} className={classname} {...proops}>{props.children}</button>
     )
 });
 const Label98: React.FC<React.DetailedHTMLProps<React.LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement>> = ({ ...props}) => {

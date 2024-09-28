@@ -53,9 +53,9 @@ export function App() {
         {/*<header className="App-header">martinho</header>*/}
         
         {
-          
+          isMobile &&
             <A98  className="rainbowa" href="https://mvg.lol/#/joguinhos" style={{cursor:'pointer',fontSize:'16px', fontWeight:'bold'}}>
-              <button style={{fontSize:'16px', fontWeight:'bold'}}>
+              <button className="rainbowa" style={{paddingTop:'4px', fontSize:'24px', fontWeight:'bold', background:'#c0c0c0', fontFamily: "Pixelated MS Sans Serif"}}>
                 <div className="rainbowa" style={{ }}>JOGAR CONEXOES</div>
               </button>
             </A98>
