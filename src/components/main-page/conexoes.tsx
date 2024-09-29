@@ -10,7 +10,7 @@ export function Conexoes(props:Readonly<{onClose:(()=>void)}>): JSX.Element {
             buttons={[WindowButtonsEnum.close]}
             onClose={props.onClose}
             >
-            <iframe width="500" height="500" title="Conexões" src="https://mvg.lol/#/joguinhos"></iframe>
+            <iframe width="500" height="500" title="Conexões" src="https://mvg.lol/joguinhos/"></iframe>
         </Window>
     )
 }
