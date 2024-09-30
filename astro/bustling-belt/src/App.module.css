@@ -1,0 +1,905 @@
+.App {
+  background-color: #6d0175c3/*#282c34*/;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: rgb(0, 0, 0);
+  background-image: url('/images/bliss_high_res.jpeg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+
+.App-header {
+  text-align: center;
+}
+
+/**
+ * 98.css
+ * Copyright (c) 2020 Jordan Scales <thatjdanisso.cool>
+ * https://github.com/jdan/98.css/blob/main/LICENSE
+ */
+
+:root {
+    /* Color */
+    --text-color: #222222;
+    --surface: #c0c0c0;
+    --button-highlight: #ffffff;
+    --button-face: #dfdfdf;
+    --button-shadow: #808080;
+    --window-frame: #0a0a0a;
+    --dialog-blue: #000080;
+    --dialog-blue-light: #1084d0;
+    --dialog-gray: #808080;
+    --dialog-gray-light: #b5b5b5;
+    --link-blue: #0000ff;
+
+    /* Spacing */
+    --element-spacing: 8px;
+    --grouped-button-spacing: 4px;
+    --grouped-element-spacing: 6px;
+    --radio-width: 12px;
+    --checkbox-width: 13px;
+    --radio-label-spacing: 6px;
+    --range-track-height: 4px;
+    --range-spacing: 10px;
+
+    /* Some detailed computations for radio buttons and checkboxes */
+    --radio-total-width-precalc: var(--radio-width) + var(--radio-label-spacing);
+    --radio-total-width: calc(var(--radio-total-width-precalc));
+    --radio-left: calc(-1 * var(--radio-total-width-precalc));
+    --radio-dot-width: 4px;
+    --radio-dot-top: calc(var(--radio-width) / 2 - var(--radio-dot-width) / 2);
+    --radio-dot-left: calc(-1 * (var(--radio-total-width-precalc)) + var(--radio-width) / 2 - var(--radio-dot-width) / 2);
+
+    --checkbox-total-width-precalc: var(--checkbox-width) + var(--radio-label-spacing);
+    --checkbox-total-width: calc(var(--checkbox-total-width-precalc));
+    --checkbox-left: calc(-1 * var(--checkbox-total-width-precalc));
+    --checkmark-width: 7px;
+    --checkmark-top: 3px;
+    --checkmark-left: 3px;
+
+    /* Borders */
+    --border-width: 1px;
+    --border-raised-outer: inset -1px -1px var(--window-frame),
+        inset 1px 1px var(--button-highlight);
+    --border-raised-inner: inset -2px -2px var(--button-shadow),
+        inset 2px 2px var(--button-face);
+    --border-sunken-outer: inset -1px -1px var(--button-highlight),
+        inset 1px 1px var(--window-frame);
+    --border-sunken-inner: inset -2px -2px var(--button-face),
+        inset 2px 2px var(--button-shadow);
+
+    /* Window borders flip button-face and button-highlight */
+    --border-window-outer: inset -1px -1px var(--window-frame),
+        inset 1px 1px var(--button-face);
+    --border-window-inner: inset -2px -2px var(--button-shadow),
+        inset 2px 2px var(--button-highlight);
+
+    /* Field borders (checkbox, input, etc) flip window-frame and button-shadow */
+    --border-field: inset -1px -1px var(--button-highlight),
+        inset 1px 1px var(--button-shadow), inset -2px -2px var(--button-face),
+        inset 2px 2px var(--window-frame);
+
+    /* Tabs */
+    --border-tab: inset -1px 0 var(--window-frame),
+        inset 1px 1px var(--button-face),
+        inset -2px 0 var(--button-shadow),
+        inset 2px 2px var(--button-highlight)
+}
+
+@font-face {
+    font-family: "Pixelated MS Sans Serif";
+    src: url("98css/converted/ms_sans_serif.woff") format("woff");
+    src: url("98css/converted/ms_sans_serif.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Pixelated MS Sans Serif";
+    src: url("98css/converted/ms_sans_serif_bold.woff") format("woff");
+    src: url("98css/converted/ms_sans_serif_bold.woff2") format("woff2");
+    font-weight: bold;
+    font-style: normal;
+}
+
+.body98 {
+    font-family: Arial;
+    font-size: 12px;
+    color: var(--text-color);
+}
+
+.button98,
+.label98,
+.input98,
+.textarea98,
+.select98,
+.option98,
+.table98,
+.ul98.tree-view,
+.window,
+.title-bar {
+    font-family: "Pixelated MS Sans Serif", Arial;
+    -webkit-font-smoothing: none;
+    font-size: 11px;
+}
+
+.h198 {
+    font-size: 5rem;
+}
+
+.h298 {
+    font-size: 2.5rem;
+}
+
+.h398 {
+    font-size: 2rem;
+}
+
+.h498 {
+    font-size: 1.5rem;
+}
+
+.u98 {
+    text-decoration: none;
+    border-bottom: 0.5px solid #222222;
+}
+
+.button98,
+.input98[type="submit"],
+.input98[type="reset"] {
+    box-sizing: border-box;
+    border: none;
+    color: transparent;
+    text-shadow: 0 0 var(--text-color);
+    background: var(--surface);
+    box-shadow: var(--border-raised-outer), var(--border-raised-inner);
+    border-radius: 0;
+
+    min-width: 75px;
+    min-height: 23px;
+    padding: 0 12px;
+}
+
+.vertical-bar {
+    width: 4px;
+    height: 20px;
+    background: #c0c0c0;
+    box-shadow: var(--border-raised-outer), var(--border-raised-inner);
+}
+
+.button98:not(:disabled):active,
+.input98[type="submit"]:not(:disabled):active,
+.input98[type="reset"]:not(:disabled):active {
+    box-shadow: var(--border-sunken-outer), var(--border-sunken-inner);
+    text-shadow: 1px 1px var(--text-color);
+}
+
+@media (not(hover)) {
+
+    .button98:not(:disabled):hover,
+    .input98[type="submit"]:not(:disabled):hover,
+    .input98[type="reset"]:not(:disabled):hover {
+        box-shadow: var(--border-sunken-outer), var(--border-sunken-inner);
+    }
+}
+
+.button98:focus,
+.input98[type="submit"]:focus,
+.input98[type="reset"]:focus {
+    outline: 1px dotted #000000;
+    outline-offset: -4px;
+}
+
+.button98::-moz-focus-inner,
+.input98[type="submit"]::-moz-focus-inner,
+.input98[type="reset"]::-moz-focus-inner {
+    border: 0;
+}
+
+:disabled,
+:disabled+.label98,
+.input98[readonly],
+.input98[readonly]+.label98 {
+    color: var(--button-shadow);
+}
+
+.button98:disabled,
+.input98[type="submit"]:disabled,
+.input98[type="reset"]:disabled,
+:disabled+.label98 {
+    text-shadow: 1px 1px 0 var(--button-highlight);
+}
+
+.window {
+    box-shadow: var(--border-window-outer), var(--border-window-inner);
+    background: var(--surface);
+    padding: 3px;
+}
+
+.title-bar {
+    background: linear-gradient(90deg,
+            var(--dialog-blue),
+            var(--dialog-blue-light));
+    padding: 3px 2px 3px 3px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title-bar.inactive {
+    background: linear-gradient(90deg,
+            var(--dialog-gray),
+            var(--dialog-gray-light));
+}
+
+.title-bar-text {
+    font-weight: bold;
+    color: white;
+    letter-spacing: 0;
+    margin-right: 24px;
+}
+
+.title-bar-controls {
+    display: flex;
+}
+
+.title-bar-controls .button98 {
+    padding: 0;
+    display: block;
+    min-width: 16px;
+    min-height: 14px;
+}
+
+.title-bar-controls .button98:active {
+    padding: 0;
+}
+
+.title-bar-controls .button98:focus {
+    outline: none;
+}
+
+.title-bar-controls .button98[aria-label="Minimize"] {
+    background-image: url("98css/icon/minimize.svg");
+    background-repeat: no-repeat;
+    background-position: bottom 3px left 4px;
+}
+
+.title-bar-controls .button98[aria-label="Maximize"] {
+    background-image: url("98css/icon/maximize.svg");
+    background-repeat: no-repeat;
+    background-position: top 2px left 3px;
+}
+
+.title-bar-controls .button98[aria-label="Restore"] {
+    background-image: url("98css/icon/restore.svg");
+    background-repeat: no-repeat;
+    background-position: top 2px left 3px;
+}
+
+.title-bar-controls .button98[aria-label="Help"] {
+    background-image: url("98css/icon/help.svg");
+    background-repeat: no-repeat;
+    background-position: top 2px left 5px;
+}
+
+.title-bar-controls .button98[aria-label="Close"] {
+    margin-left: 2px;
+    background-image: url("98css/icon/close.svg");
+    background-repeat: no-repeat;
+    background-position: top 3px left 4px;
+}
+
+.status-bar {
+    margin: 0px 1px;
+    display: flex;
+    gap: 1px;
+}
+
+.status-bar-field {
+    box-shadow: inset -1px -1px #dfdfdf, inset 1px 1px #808080;
+    flex-grow: 1;
+    padding: 2px 3px;
+    margin: 0;
+}
+
+.window-body {
+    margin: var(--element-spacing);
+}
+
+.fieldset98 {
+    border-image: url("98css/icon/groupbox-border.svg") 2;
+    padding: calc(2 * var(--border-width) + var(--element-spacing));
+    padding-block-start: var(--element-spacing);
+    margin: 0;
+}
+
+.legend98 {
+    background: var(--surface);
+}
+
+.field-row {
+    display: flex;
+    align-items: center;
+}
+
+[class^="field-row"]+[class^="field-row"] {
+    margin-top: var(--grouped-element-spacing);
+}
+
+.field-row>*+* {
+    margin-left: var(--grouped-element-spacing);
+}
+
+.field-row-stacked {
+    display: flex;
+    flex-direction: column;
+}
+
+.field-row-stacked *+* {
+    margin-top: var(--grouped-element-spacing);
+}
+
+.label98 {
+    display: inline-flex;
+    align-items: center;
+}
+
+.input98[type="radio"],
+.input98[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    margin: 0;
+    background: 0;
+    position: fixed;
+    opacity: 0;
+    border: none;
+}
+
+.input98[type="radio"]+.label98,
+.input98[type="checkbox"]+.label98 {
+    line-height: 13px;
+}
+
+.input98[type="radio"]+.label98 {
+    position: relative;
+    margin-left: var(--radio-total-width);
+}
+
+.input98[type="radio"]+.label98::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: calc(-1 * (var(--radio-total-width-precalc)));
+    display: inline-block;
+    width: var(--radio-width);
+    height: var(--radio-width);
+    margin-right: var(--radio-label-spacing);
+    background: url("98css/icon/radio-border.svg");
+}
+
+.input98[type="radio"]:active+.label98::before {
+    background: url("98css/icon/radio-border-disabled.svg");
+}
+
+.input98[type="radio"]:checked+.label98::after {
+    content: "";
+    display: block;
+    width: var(--radio-dot-width);
+    height: var(--radio-dot-width);
+    top: var(--radio-dot-top);
+    left: var(--radio-dot-left);
+    position: absolute;
+    background: url("98css/icon/radio-dot.svg");
+}
+
+.input98[type="radio"]:focus+.label98,
+.input98[type="checkbox"]:focus+.label98 {
+    outline: 1px dotted #000000;
+}
+
+.input98[type="radio"][disabled]+.label98::before {
+    background: url("98css/icon/radio-border-disabled.svg");
+}
+
+.input98[type="radio"][disabled]:checked+.label98::after {
+    background: url("98css/icon/radio-dot-disabled.svg");
+}
+
+.input98[type="checkbox"]+.label98 {
+    position: relative;
+    margin-left: var(--checkbox-total-width);
+}
+
+.input98[type="checkbox"]+.label98::before {
+    content: "";
+    position: absolute;
+    left: calc(-1 * (var(--checkbox-total-width-precalc)));
+    display: inline-block;
+    width: var(--checkbox-width);
+    height: var(--checkbox-width);
+    background: var(--button-highlight);
+    box-shadow: var(--border-field);
+    margin-right: var(--radio-label-spacing);
+}
+
+.input98[type="checkbox"]:active+.label98::before {
+    background: var(--surface);
+}
+
+.input98[type="checkbox"]:checked+.label98::after {
+    content: "";
+    display: block;
+    width: var(--checkmark-width);
+    height: var(--checkmark-width);
+    position: absolute;
+    top: var(--checkmark-top);
+    left: calc(-1 * (var(--checkbox-total-width-precalc)) + var(--checkmark-left));
+    background: url("98css/icon/checkmark.svg");
+}
+
+.input98[type="checkbox"][disabled]+.label98::before {
+    background: var(--surface);
+}
+
+.input98[type="checkbox"][disabled]:checked+.label98::after {
+    background: url("98css/icon/checkmark-disabled.svg");
+}
+
+.input98[type="text"],
+.input98[type="password"],
+.input98[type="email"],
+.input98[type="number"],
+.select98,
+.textarea98 {
+    padding: 3px 4px;
+    border: none;
+    box-shadow: var(--border-field);
+    background-color: var(--button-highlight);
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0;
+}
+
+.input98[type="text"],
+.input98[type="password"],
+.input98[type="email"],
+.select98 {
+    height: 21px;
+}
+
+.input98[type="number"] {
+    /* need this 1 pixel to fit the spinner controls in box */
+    height: 22px;
+}
+
+.input98[type="text"],
+.input98[type="password"],
+.input98[type="email"],
+.input98[type="number"] {
+    /* For some reason descenders are getting cut off without this */
+    line-height: 2;
+}
+
+.input98[type="email"]:disabled,
+.input98[type="password"]:disabled,
+.input98[type="text"]:disabled,
+.input98[type="number"]:disabled,
+.input98[type="email"]:read-only,
+.input98[type="password"]:read-only,
+.input98[type="text"]:read-only,
+.input98[type="number"]:read-only,
+.textarea98:disabled {
+    background-color: var(--surface);
+}
+
+.select98 {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: relative;
+    padding-right: 32px;
+    background-image: url("98css/icon/button-down.svg");
+    background-position: top 2px right 2px;
+    background-repeat: no-repeat;
+    border-radius: 0;
+}
+
+.select98:focus,
+.input98[type="text"]:focus,
+.input98[type="password"]:focus,
+.input98[type="email"]:focus,
+.input98[type="number"]:focus,
+.textarea98:focus {
+    outline: none;
+}
+
+.input98[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    background: transparent;
+}
+
+.input98[type="range"]:focus {
+    outline: none;
+}
+
+.input98[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 21px;
+    width: 11px;
+    background: url("98css/icon/indicator-horizontal.svg");
+    transform: translateY(-8px);
+    box-shadow: none;
+    border: none;
+}
+
+.input98[type="range"].has-box-indicator::-webkit-slider-thumb {
+    background: url("98css/icon/indicator-rectangle-horizontal.svg");
+    transform: translateY(-10px);
+}
+
+.input98[type="range"]::-moz-range-thumb {
+    height: 21px;
+    width: 11px;
+    border: 0;
+    border-radius: 0;
+    background: url("98css/icon/indicator-horizontal.svg");
+    transform: translateY(2px);
+}
+
+.input98[type="range"].has-box-indicator::-moz-range-thumb {
+    background: url("98css/icon/indicator-rectangle-horizontal.svg");
+    transform: translateY(0px);
+}
+
+.input98[type="range"]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 2px;
+    box-sizing: border-box;
+    background: black;
+    border-right: 1px solid grey;
+    border-bottom: 1px solid grey;
+    box-shadow: 1px 0 0 white, 1px 1px 0 white, 0 1px 0 white, -1px 0 0 darkgrey,
+        -1px -1px 0 darkgrey, 0 -1px 0 darkgrey, -1px 1px 0 white, 1px -1px darkgrey;
+}
+
+.input98[type="range"]::-moz-range-track {
+    width: 100%;
+    height: 2px;
+    box-sizing: border-box;
+    background: black;
+    border-right: 1px solid grey;
+    border-bottom: 1px solid grey;
+    box-shadow: 1px 0 0 white, 1px 1px 0 white, 0 1px 0 white, -1px 0 0 darkgrey,
+        -1px -1px 0 darkgrey, 0 -1px 0 darkgrey, -1px 1px 0 white, 1px -1px darkgrey;
+}
+
+.is-vertical {
+    display: inline-block;
+    width: 4px;
+    height: 150px;
+    transform: translateY(50%);
+}
+
+.is-vertical>.input98[type="range"] {
+    width: 150px;
+    height: 4px;
+    margin: 0 calc(var(--grouped-element-spacing) + var(--range-spacing)) 0 var(--range-spacing);
+    transform-origin: left;
+    transform: rotate(270deg) translateX(calc(-50% + var(--element-spacing)));
+}
+
+.is-vertical>.input98[type="range"]::-webkit-slider-runnable-track {
+    border-left: 1px solid grey;
+    border-right: 0;
+    border-bottom: 1px solid grey;
+    box-shadow: -1px 0 0 white, -1px 1px 0 white, 0 1px 0 white, 1px 0 0 darkgrey,
+        1px -1px 0 darkgrey, 0 -1px 0 darkgrey, 1px 1px 0 white, -1px -1px darkgrey;
+}
+
+.is-vertical>.input98[type="range"]::-moz-range-track {
+    border-left: 1px solid grey;
+    border-right: 0;
+    border-bottom: 1px solid grey;
+    box-shadow: -1px 0 0 white, -1px 1px 0 white, 0 1px 0 white, 1px 0 0 darkgrey,
+        1px -1px 0 darkgrey, 0 -1px 0 darkgrey, 1px 1px 0 white, -1px -1px darkgrey;
+}
+
+.is-vertical>.input98[type="range"]::-webkit-slider-thumb {
+    transform: translateY(-8px) scaleX(-1);
+}
+
+.is-vertical>.input98[type="range"].has-box-indicator::-webkit-slider-thumb {
+    transform: translateY(-10px) scaleX(-1);
+}
+
+.is-vertical>.input98[type="range"]::-moz-range-thumb {
+    transform: translateY(2px) scaleX(-1);
+}
+
+.is-vertical>.input98[type="range"].has-box-indicator::-moz-range-thumb {
+    transform: translateY(0px) scaleX(-1);
+}
+
+.select98:focus {
+    color: var(--button-highlight);
+    background-color: var(--dialog-blue);
+}
+
+.select98:focus .option98 {
+    color: #000;
+    background-color: #fff;
+}
+
+.select98:active {
+    background-image: url("98css/icon/button-down-active.svg");
+}
+
+.a98 {
+    color: var(--link-blue);
+}
+
+.a98:focus {
+    outline: 1px dotted var(--link-blue);
+}
+
+.ul98.tree-view {
+    display: block;
+    background: var(--button-highlight);
+    box-shadow: var(--border-field);
+    padding: 6px;
+    margin: 0;
+}
+
+.ul98.tree-view .li98 {
+    list-style-type: none;
+}
+
+.ul98.tree-view .a98 {
+    text-decoration: none;
+    color: #000;
+}
+
+.ul98.tree-view .a98:focus {
+    background-color: var(--dialog-blue);
+    color: var(--button-highlight);
+}
+
+.ul98.tree-view .ul98,
+.ul98.tree-view .li98 {
+    margin-top: 3px;
+}
+
+.ul98.tree-view .ul98 {
+    margin-left: 16px;
+    padding-left: 16px;
+    /* Goes down too far */
+    border-left: 1px dotted #808080;
+}
+
+.ul98.tree-view .ul98>.li98 {
+    position: relative;
+}
+
+.ul98.tree-view .ul98>.li98::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: -16px;
+    top: 6px;
+    width: 12px;
+    border-bottom: 1px dotted #808080;
+}
+
+/* Cover the bottom of the left dotted border */
+.ul98.tree-view .ul98>.li98:last-child::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: -20px;
+    top: 7px;
+    bottom: 0px;
+    width: 8px;
+    background: var(--button-highlight);
+}
+
+.ul98.tree-view .details98 {
+    margin-top: 0;
+}
+
+.ul98.tree-view .details98[open] .summary98 {
+    margin-bottom: 0;
+}
+
+.ul98.tree-view .ul98 .details98>.summary98:before {
+    margin-left: -22px;
+    position: relative;
+    z-index: 1;
+}
+
+.ul98.tree-view .details98>.summary98:before {
+    text-align: center;
+    display: block;
+    float: left;
+    content: "+";
+    border: 1px solid #808080;
+    width: 8px;
+    height: 9px;
+    line-height: 8px;
+    margin-right: 5px;
+    padding-left: 1px;
+    background-color: #fff;
+}
+
+.ul98.tree-view .details98[open]>.summary98:before {
+    content: "-";
+}
+
+.ul98.tree-view .details98>.summary98::marker,
+.ul98.tree-view .details98>.summary98::-webkit-details-marker {
+    content: "";
+}
+
+.pre98 {
+    display: block;
+    background: var(--button-highlight);
+    box-shadow: var(--border-field);
+    padding: 12px 8px;
+    margin: 0;
+}
+
+.code98,
+.code98 * {
+    font-family: monospace;
+}
+
+.summary98:focus {
+    outline: 1px dotted #000000;
+}
+
+::-webkit-scrollbar {
+    width: 16px;
+}
+
+::-webkit-scrollbar:horizontal {
+    height: 17px;
+}
+
+::-webkit-scrollbar-corner {
+    background: var(--button-face);
+}
+
+::-webkit-scrollbar-track {
+    background-image: url("98css/icon/scrollbar-background.svg");
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--button-face);
+    box-shadow: var(--border-raised-outer), var(--border-raised-inner);
+}
+
+::-webkit-scrollbar-button:horizontal:start:decrement,
+::-webkit-scrollbar-button:horizontal:end:increment,
+::-webkit-scrollbar-button:vertical:start:decrement,
+::-webkit-scrollbar-button:vertical:end:increment {
+    display: block;
+}
+
+::-webkit-scrollbar-button:vertical:start {
+    height: 17px;
+    background-image: url("98css/icon/button-up.svg");
+}
+
+::-webkit-scrollbar-button:vertical:end {
+    height: 17px;
+    background-image: url("98css/icon/button-down.svg");
+}
+
+::-webkit-scrollbar-button:horizontal:start {
+    width: 16px;
+    background-image: url("98css/icon/button-left.svg");
+}
+
+::-webkit-scrollbar-button:horizontal:end {
+    width: 16px;
+    background-image: url("98css/icon/button-right.svg");
+}
+
+.window[role=tabpanel] {
+    position: relative;
+    z-index: 2;
+}
+
+.menu98[role=tablist] {
+    position: relative;
+    margin: 0 0 -2px 0;
+    text-indent: 0;
+    list-style-type: none;
+    display: flex;
+    padding-left: 3px;
+}
+
+.menu98[role=tablist]>.li98 {
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    box-shadow: var(--border-tab);
+    z-index: 1;
+}
+
+.menu98[role=tablist]>.li98[aria-selected=true] {
+    padding-bottom: 2px;
+    margin-top: -2px;
+    background-color: var(--surface);
+    position: relative;
+    z-index: 8;
+    margin-left: -3px;
+}
+
+.menu98[role=tablist]>.li98>a {
+    display: block;
+    color: #222;
+    margin: 6px;
+    text-decoration: none;
+}
+
+.menu98[role=tablist]>.li98[aria-selected=true]>a:focus {
+    outline: none;
+}
+
+.menu98[role=tablist]>.li98>a:focus {
+    outline: 1px dotted #222;
+}
+
+.menu98[role=tablist].m.ul98tirows>.li98 {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.sunken-panel {
+    box-sizing: border-box;
+    border: 2px groove transparent;
+    border-image: url("98css/icon/sunken-panel-border.svg") 2;
+    overflow: auto;
+    background-color: #fff;
+}
+
+.table98 {
+    border-collapse: collapse;
+    position: relative;
+    text-align: left;
+    white-space: nowrap;
+    background-color: #fff;
+}
+
+.table98>.thead98>.tr98>* {
+    position: sticky;
+    top: 0;
+    height: 17px;
+    box-shadow: var(--border-raised-outer), var(--border-raised-inner);
+    background: var(--surface);
+    box-sizing: border-box;
+    font-weight: normal;
+    padding: 0 var(--grouped-element-spacing);
+}
+
+.table98.interactive>.tbody98>.tr98 {
+    cursor: pointer;
+}
+
+.table98>.tbody98>.tr98.highlighted {
+    color: #fff;
+    background-color: var(--dialog-blue);
+}
+
+.table98>.tbody98>.tr98>* {
+    padding: 0 var(--grouped-element-spacing);
+    height: 14px;
+}

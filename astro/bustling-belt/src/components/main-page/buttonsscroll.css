@@ -1,0 +1,4 @@
+.gridcontainer {
+    display: grid;
+    grid-auto-flow: column; /*define que cada nova row da grid deve ser coluna*/
+}

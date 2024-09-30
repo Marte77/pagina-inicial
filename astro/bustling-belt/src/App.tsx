@@ -1,0 +1,77 @@
+import styles from "./App.module.css";
+
+import { isMobile } from "react-device-detect";
+import { SnackbarWrapper } from "./components/main-page/snackbarWrapper";
+import { MobileWarning } from "./components/main-page/mobileWarning";
+import { WhatIWorkWith } from "./components/main-page/whatIWorkWith";
+import { Bio } from "./components/main-page/bio";
+import { Socials } from "./components/main-page/socials";
+import { Buttons88x31 } from "./components/main-page/88x31buttons";
+import { MusicPlayer } from "./components/main-page/musicPlayer";
+import { Button98 } from "./components/html_tags/html";
+
+import spamton_cropped from '/src/audio/spamton_cropped.mp3'
+import bliss from '/src/images/bliss.png'
+
+import under_construction from '/src/images/under_construction.png'
+import { useEffect } from "react";
+
+function closeTab() {
+  window.opener = null;
+  window.open("", "_self");
+  window.close();
+}
+
+export function App() {
+  let audio:HTMLAudioElement | undefined = undefined
+  //const navigate = useNavigate();
+  const handleClick = () => {
+    //navigate("/blog");
+  }
+  useEffect(()=>{
+    audio = new Audio(spamton_cropped)
+  },[])
+  return (
+    <div style={{
+      margin: 0,
+      fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen','Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',sans-serif",
+      WebkitFontSmoothing: "antialiased",
+      MozOsxFontSmoothing: "grayscale"
+    }} className={`${styles["body98"]}`}>
+      <div className={`${styles["title-bar"]} ${styles["inactive"]}`}>
+        <div className={styles["title-bar-text"]}>martinho tm - resumo</div>
+        {
+          !isMobile &&
+          <img alt="under_construction" src={under_construction}/>
+        }
+        <div className={styles["title-bar-controls"]}>
+          <a href="/blog/"><Button98 aria-label="Help" onClick={handleClick}></Button98></a>
+          <Button98 aria-label="Close" onClick={closeTab}></Button98>
+        </div>
+      </div>
+      <div className={styles.App} style={{backgroundImage:bliss}}>
+        {/*<header className="App-header">martinho</header>*/}
+        {
+          isMobile && 
+          <MobileWarning/>
+        }
+        {
+          !isMobile && 
+          <SnackbarWrapper message="Try dragging the windows!"/>
+        }
+        <WhatIWorkWith style={{zIndex:9}} />
+        <Bio style={{zIndex:9}}/>
+        <Socials style={{zIndex:8}}/>
+        <MusicPlayer music={audio} style={{zIndex:8}}/>
+        <Buttons88x31/>
+        
+      </div>
+    </div>
+  );
+}
+//<iframe width={400} height={700} src="https://mvg.lol/#/joguinhos"></iframe>
+
+
+
+
+export default App;
