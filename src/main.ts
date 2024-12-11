@@ -2,6 +2,7 @@ import "./style.css";
 //import { setupCounter } from "./counter.ts";
 import * as THREE from "three";
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import Stats from "stats.js"
 /*
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div>
@@ -12,6 +13,9 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 `
 setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
 */
+var stats = new Stats();
+stats.showPanel(0);
+document.body.appendChild( stats.dom );
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
@@ -27,39 +31,43 @@ document.body.appendChild(renderer.domElement);
 const pointLight = new THREE.PointLight(0xff00e5, 2.5, 0, 0);
 pointLight.position.set(100, 500, 0);
 scene.add(pointLight);
+const pointLight2 = new THREE.PointLight(0xffffff, 2.5, 0, 0);
+pointLight2.position.set(-100, -500, 0);
+scene.add(pointLight2);
 
-const geometry = new THREE.SphereGeometry(1, 10, 10);
+const spheregeometry = new THREE.SphereGeometry(1, 100, 100);
+const spherematerial = new THREE.MeshPhongMaterial({ color: 0xffffff, shininess: 500 });
+const sphere = new THREE.Mesh(spheregeometry, spherematerial);
+scene.add(sphere);
+const geometry = new THREE.BoxGeometry(1, 1, 1);
 const material = new THREE.MeshPhongMaterial({ color: 0xffffff, shininess: 500 });
 const cube = new THREE.Mesh(geometry, material);
+cube.position.set(-1,-1,0)
 scene.add(cube);
-camera.position.z = 5;
-
 
 const controls = new OrbitControls( camera, renderer.domElement);
-controls.minDistance = 50;
-controls.maxDistance = 500;
-controls.keys = {
-  LEFT:'a',
-  RIGHT:'d',
-  BOTTOM:'s',
-  UP:'w',
-}
+controls.minDistance = 5;
+controls.maxDistance = 50;
 
-
+controls.target = sphere.position
+camera.position.set(0, 1, 5)
+console.log(camera.position, sphere.position)
 let goingUp = true;
 function animate() {
-  controls.target = cube.position
+  stats.begin()
   if (goingUp) {
-    cube.position.y += 0.01;
+    sphere.position.y += 0.01;
   } else {
-    cube.position.y -= 0.01;
+    sphere.position.y -= 0.01;
   }
-  if (cube.position.y > 3.0)
+  if (sphere.position.y > 3.0)
     goingUp = false
-  else if (cube.position.y < 0.0)
+  else if (sphere.position.y < 0.0)
     goingUp = true
-  cube.rotation.x += 0.01;
+  sphere.rotation.x += 0.01;
+  camera.position.set(camera.position.x, sphere.position.y, camera.position.z)
   renderer.render(scene, camera);
+  stats.end();
 }
 
 renderer.setAnimationLoop(animate);
