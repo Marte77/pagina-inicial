@@ -18,32 +18,58 @@ stats.showPanel(0);
 document.body.appendChild( stats.dom );
 
 const scene = new THREE.Scene();
+scene.background = new THREE.Color( 0xa0a0a0 );
+scene.fog = new THREE.Fog( 0xa0a0a0, 10, 50 );
 const camera = new THREE.PerspectiveCamera(
   75,
   window.innerWidth / window.innerHeight,
   0.1,
   100
 );
-const renderer = new THREE.WebGLRenderer();
+const renderer = new THREE.WebGLRenderer({antialias: true});
+renderer.shadowMap.enabled = true
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-const pointLight = new THREE.PointLight(0xff00e5, 2.5, 0, 0);
-pointLight.position.set(100, 500, 0);
+const pointLight = new THREE.DirectionalLight(0xffffff, 2.5);
+pointLight.position.set(22, 11, 0);
+pointLight.shadow.mapSize.width = 512; // default
+pointLight.shadow.mapSize.height = 512; // default
+pointLight.shadow.camera.near = 0; // default
+pointLight.shadow.camera.far = 500; // default
+pointLight.castShadow = true;
 scene.add(pointLight);
-const pointLight2 = new THREE.PointLight(0xffffff, 2.5, 0, 0);
-pointLight2.position.set(-100, -500, 0);
-scene.add(pointLight2);
+//const pointLight2 = new THREE.PointLight(0xff00e5, 2.5, 0, 0);
+//pointLight2.position.set(-100, -500, 0);
+//scene.add(pointLight2);
+
+const ground = new THREE.Mesh(
+  new THREE.PlaneGeometry( 100, 100 ),
+  new THREE.MeshPhongMaterial( { color: 0xcbcbcb, depthWrite: false })
+);
+ground.position.y = -0.5
+ground.rotation.x = - Math.PI / 2;
+ground.receiveShadow = true;
+scene.add( ground );
 
 const spheregeometry = new THREE.SphereGeometry(1, 100, 100);
 const spherematerial = new THREE.MeshPhongMaterial({ color: 0xffffff, shininess: 500 });
 const sphere = new THREE.Mesh(spheregeometry, spherematerial);
+sphere.receiveShadow = true;
+sphere.castShadow = true;
 scene.add(sphere);
 const geometry = new THREE.BoxGeometry(1, 1, 1);
 const material = new THREE.MeshPhongMaterial({ color: 0xffffff, shininess: 500 });
 const cube = new THREE.Mesh(geometry, material);
-cube.position.set(-1,-1,0)
+cube.position.set(-1,0,0)
+cube.receiveShadow = true;
+cube.castShadow = true;
 scene.add(cube);
+const cube2 = new THREE.Mesh(geometry, material);
+cube2.position.set(-5,0,3)
+cube2.receiveShadow = true;
+cube2.castShadow = true;
+scene.add(cube2);
 
 const controls = new OrbitControls( camera, renderer.domElement);
 controls.minDistance = 5;
