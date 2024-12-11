@@ -1,0 +1,18 @@
+canvas {
+  z-index: 2;
+}
+body {
+  background-color: black;
+  margin: 0;
+  color: whitesmoke;
+}
+.text {
+  position: absolute;
+  top: 10px;
+  width: 100%;
+  z-index: 100;
+  display: block;
+  padding-left: 1%;
+  padding-top: 1%;
+  font-family: Arial, Helvetica, sans-serif;
+}
