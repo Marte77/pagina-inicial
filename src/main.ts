@@ -3,6 +3,7 @@ import "./style.css";
 import * as THREE from "three";
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import Stats from "stats.js"
+import { FirstPersonControls, FlyControls } from "three/examples/jsm/Addons.js";
 /*
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div>
@@ -20,12 +21,15 @@ document.body.appendChild( stats.dom );
 const scene = new THREE.Scene();
 scene.background = new THREE.Color( 0xa0a0a0 );
 scene.fog = new THREE.Fog( 0xa0a0a0, 10, 50 );
+
 const camera = new THREE.PerspectiveCamera(
   75,
   window.innerWidth / window.innerHeight,
   0.1,
   100
 );
+camera.position.set(0, 1, 5)
+
 const renderer = new THREE.WebGLRenderer({antialias: true});
 renderer.shadowMap.enabled = true
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -71,14 +75,15 @@ cube2.receiveShadow = true;
 cube2.castShadow = true;
 scene.add(cube2);
 
-const controls = new OrbitControls( camera, renderer.domElement);
-controls.minDistance = 5;
-controls.maxDistance = 50;
+const orbitControls = new OrbitControls( camera, renderer.domElement);
+orbitControls.minDistance = 0;
+orbitControls.maxDistance = 50;
+orbitControls.target = sphere.position
+let controls:THREE.Controls<{}> = orbitControls
+const flyControls = new FirstPersonControls(camera, renderer.domElement)
 
-controls.target = sphere.position
-camera.position.set(0, 1, 5)
-console.log(camera.position, sphere.position)
 let goingUp = true;
+let followingSphere = true
 function animate() {
   stats.begin()
   if (goingUp) {
@@ -91,7 +96,8 @@ function animate() {
   else if (sphere.position.y < 0.0)
     goingUp = true
   sphere.rotation.x += 0.01;
-  camera.position.set(camera.position.x, sphere.position.y, camera.position.z)
+  if (followingSphere)
+    camera.position.set(camera.position.x, sphere.position.y, camera.position.z)
   renderer.render(scene, camera);
   stats.end();
 }
@@ -102,3 +108,12 @@ window.onresize = () => {
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
 };
+
+window.onkeyup = ((ev) => {
+  if(ev.key === 'p') {
+    followingSphere = !followingSphere
+    if (controls instanceof FlyControls)
+      controls = orbitControls
+    else controls = flyControls
+  }
+})
