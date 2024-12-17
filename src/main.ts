@@ -84,6 +84,20 @@ const flyControls = new FirstPersonControls(camera, renderer.domElement)
 
 let goingUp = true;
 let followingSphere = true
+
+const shaderMaterial = new THREE.ShaderMaterial({
+	uniforms: {
+		time: { 
+      value: 1.0
+    },
+		resolution: {
+      value: new THREE.Vector2()
+    }
+	},
+	vertexShader: document.getElementById('vertexShader')!.textContent!,
+	fragmentShader: document.getElementById('fragmentShader')!.textContent!
+});
+
 function animate() {
   stats.begin()
   if (goingUp) {
