@@ -17,8 +17,20 @@ setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
 var stats = new Stats();
 stats.showPanel(0);
 document.body.appendChild( stats.dom );
-
+const shaderMaterial = new THREE.ShaderMaterial({
+	uniforms: {
+		time: { 
+      value: 1.0
+    },
+		resolution: {
+      value: new THREE.Vector2()
+    }
+	},
+	vertexShader: document.getElementById('vertexShader')!.textContent!,
+	fragmentShader: document.getElementById('fragmentShader')!.textContent!
+});
 const scene = new THREE.Scene();
+scene.overrideMaterial = shaderMaterial;
 scene.background = new THREE.Color( 0xa0a0a0 );
 scene.fog = new THREE.Fog( 0xa0a0a0, 10, 50 );
 
@@ -69,18 +81,7 @@ cube.position.set(-1,0,0)
 cube.receiveShadow = true;
 cube.castShadow = true;
 scene.add(cube);
-const shaderMaterial = new THREE.ShaderMaterial({
-	uniforms: {
-		time: { 
-      value: 1.0
-    },
-		resolution: {
-      value: new THREE.Vector2()
-    }
-	},
-	vertexShader: document.getElementById('vertexShader')!.textContent!,
-	fragmentShader: document.getElementById('fragmentShader')!.textContent!
-});
+
 const cube2 = new THREE.Mesh(geometry, shaderMaterial);
 cube2.position.set(-5,0,3)
 cube2.receiveShadow = true;
