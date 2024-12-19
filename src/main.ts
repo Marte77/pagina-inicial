@@ -89,15 +89,10 @@ cube2.receiveShadow = true;
 cube2.castShadow = true;
 scene.add(cube2);
 
-const orbitControls = new OrbitControls( camera, renderer.domElement);
-orbitControls.minDistance = 0;
-orbitControls.maxDistance = 50;
-orbitControls.target = sphere.position
-let controls:THREE.Controls<{}> = orbitControls
 const flyControls = new FirstPersonControls(camera, renderer.domElement)
 
 let goingUp = true;
-let followingSphere = true
+let followingSphere = false
 
 
 function animate() {
@@ -126,10 +121,9 @@ window.onresize = () => {
 };
 
 window.onkeyup = ((ev) => {
-  if(ev.key === 'p') {
+  let key = ev.key;
+  if(key === 'p') {
     followingSphere = !followingSphere
-    if (controls instanceof FlyControls)
-      controls = orbitControls
-    else controls = flyControls
+  } else if (key === 'l') {
   }
 })
