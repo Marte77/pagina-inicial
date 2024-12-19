@@ -69,7 +69,19 @@ cube.position.set(-1,0,0)
 cube.receiveShadow = true;
 cube.castShadow = true;
 scene.add(cube);
-const cube2 = new THREE.Mesh(geometry, material);
+const shaderMaterial = new THREE.ShaderMaterial({
+	uniforms: {
+		time: { 
+      value: 1.0
+    },
+		resolution: {
+      value: new THREE.Vector2()
+    }
+	},
+	vertexShader: document.getElementById('vertexShader')!.textContent!,
+	fragmentShader: document.getElementById('fragmentShader')!.textContent!
+});
+const cube2 = new THREE.Mesh(geometry, shaderMaterial);
 cube2.position.set(-5,0,3)
 cube2.receiveShadow = true;
 cube2.castShadow = true;
@@ -85,18 +97,6 @@ const flyControls = new FirstPersonControls(camera, renderer.domElement)
 let goingUp = true;
 let followingSphere = true
 
-const shaderMaterial = new THREE.ShaderMaterial({
-	uniforms: {
-		time: { 
-      value: 1.0
-    },
-		resolution: {
-      value: new THREE.Vector2()
-    }
-	},
-	vertexShader: document.getElementById('vertexShader')!.textContent!,
-	fragmentShader: document.getElementById('fragmentShader')!.textContent!
-});
 
 function animate() {
   stats.begin()
