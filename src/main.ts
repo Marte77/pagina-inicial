@@ -30,7 +30,8 @@ const shaderMaterial = new THREE.ShaderMaterial({
 	fragmentShader: document.getElementById('fragmentShader')!.textContent!
 });
 const scene = new THREE.Scene();
-scene.overrideMaterial = shaderMaterial;
+// descomentar aplica o shader à scene toda
+//scene.overrideMaterial = shaderMaterial;
 scene.background = new THREE.Color( 0xa0a0a0 );
 scene.fog = new THREE.Fog( 0xa0a0a0, 10, 50 );
 
