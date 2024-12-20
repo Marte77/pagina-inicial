@@ -3,7 +3,7 @@ import "./style.css";
 import * as THREE from "three";
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import Stats from "stats.js"
-import { FirstPersonControls, FlyControls } from "three/examples/jsm/Addons.js";
+import { AfterimagePass, EffectComposer, FirstPersonControls, FlyControls, OutputPass, RenderPass } from "three/examples/jsm/Addons.js";
 /*
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div>
@@ -90,10 +90,21 @@ cube2.castShadow = true;
 scene.add(cube2);
 
 const flyControls = new FirstPersonControls(camera, renderer.domElement)
+const orbitControls = new OrbitControls( camera, renderer.domElement);
+orbitControls.minDistance = 0;
+orbitControls.maxDistance = 50;
+//orbitControls.target = sphere.position*/
+let controls:THREE.Controls<{}> = flyControls
 
 let goingUp = true;
 let followingSphere = false
 
+let composer = new EffectComposer(renderer);
+composer.addPass(new RenderPass(scene, camera));
+let afterimagePass = new AfterimagePass();
+composer.addPass(afterimagePass);
+const outputPass = new OutputPass();
+composer.addPass(outputPass);
 
 function animate() {
   stats.begin()
@@ -109,7 +120,8 @@ function animate() {
   sphere.rotation.x += 0.01;
   if (followingSphere)
     camera.position.set(camera.position.x, sphere.position.y, camera.position.z)
-  renderer.render(scene, camera);
+  //renderer.render(scene, camera);
+  composer.render(0.2);
   stats.end();
 }
 
@@ -124,6 +136,13 @@ window.onkeyup = ((ev) => {
   let key = ev.key;
   if(key === 'p') {
     followingSphere = !followingSphere
+    controls.disconnect()
+    if (controls instanceof FlyControls)
+      controls = orbitControls
+    else controls = flyControls
+    controls.connect()
   } else if (key === 'l') {
+    afterimagePass.enabled = !afterimagePass.enabled 
+    console.log(controls)
   }
 })
