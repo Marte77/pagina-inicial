@@ -102,6 +102,7 @@ let followingSphere = false
 let composer = new EffectComposer(renderer);
 composer.addPass(new RenderPass(scene, camera));
 let afterimagePass = new AfterimagePass();
+afterimagePass.enabled = false
 composer.addPass(afterimagePass);
 const outputPass = new OutputPass();
 composer.addPass(outputPass);
@@ -121,7 +122,7 @@ function animate() {
   if (followingSphere)
     camera.position.set(camera.position.x, sphere.position.y, camera.position.z)
   //renderer.render(scene, camera);
-  composer.render(0.2);
+  composer.render();
   stats.end();
 }
 
