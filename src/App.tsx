@@ -17,6 +17,7 @@ import bliss from '/images/bliss.png'
 import under_construction from '/images/under_construction.png'
 import { Conexoes } from "./components/main-page/conexoes";
 import { useState } from "react";
+import { RandomSong } from "./components/main-page/randomSong";
 
 function closeTab() {
   window.opener = null;
@@ -31,6 +32,7 @@ export function App() {
       navigate("/blog");
   }
   const [removeConexoes, setRemoveConexoes] = useState(false);
+  const [removeRandomSong, setRemoveRandomSong] = useState(false);
   return (
     <div style={{
       margin: 0,
@@ -73,6 +75,10 @@ export function App() {
         <Socials style={{zIndex:8}}/>
         <MusicPlayer music={audio} style={{zIndex:8}}/>
         <Buttons88x31/>
+        {
+          !removeRandomSong &&
+          <RandomSong style={{zIndex:8}} onClose={()=>setRemoveRandomSong(!removeRandomSong)}/>
+        }
         {
           !removeConexoes && !isMobile &&
             <Conexoes onClose={()=>setRemoveConexoes(!removeConexoes)}/>
