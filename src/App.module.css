@@ -109,6 +109,11 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'AU_Peto'; /*a name to be used later*/
+    src: url('98css/converted/AU_Peto.ttf'); /*URL to font*/
+}
+
 .body98 {
     font-family: Arial;
     font-size: 12px;

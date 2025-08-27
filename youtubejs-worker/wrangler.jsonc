@@ -6,10 +6,21 @@
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"name": "youtubejs-worker",
 	"main": "src/index.ts",
-	"compatibility_date": "2025-04-07",
+	"compatibility_date": "2025-04-05",
 	"observability": {
 		"enabled": true
-	}
+	},
+	"triggers": {
+		"crons": [
+		  "0 * * * *"
+		]
+	},
+	"send_email": [
+		{
+			"name": "send_alert_in_case_its_down",
+			"destination_address": "eu@martinho.pt"
+		}
+	]
 	/**
 	 * Smart Placement
 	 * Docs: https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement

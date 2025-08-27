@@ -23,7 +23,7 @@ export function WhatIWorkWith(props: Readonly<WhatIWorkWithProps>) {
 						arrayOfContents={[
 							<ExpandableSection
 								key="job"
-								title="My current job at Altice Labs"
+								title="My previous job at Altice Labs"
 								arrayOfContents={["Java using JSLEE", "SIP"]}
 							/>,
 							<ExpandableSection

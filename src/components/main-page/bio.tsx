@@ -22,7 +22,8 @@ export function Bio(props: Readonly<BioProps>) : JSX.Element{
 			<Ul98 className={`${styles["tree-view"]} `}>
 				I'm Martinho, I'm a {minhaIdade}&nbsp;years old software
 				engineer. <br />
-				I'm currently working at Altice Labs in the ABC team.
+				Currently I'm a full time student at Aarhus University <span style={{fontFamily: "AU_Peto"}}>AU</span><br />
+				I also used to work at Altice Labs in the ABC team.
 				<br />
 			</Ul98>
 		</Window>
