@@ -142,7 +142,7 @@ export default {
 		const status = result.status / 100
 		if ((status == 2 || status == 3)) {
 			const msg = createMimeMessage();
-			msg.setSender({ name: "ALERTA MARTINHO.PT", addr: "eu@martinho.tp" });
+			msg.setSender({ name: "ALERTA MARTINHO.PT", addr: "eu@martinho.pt" });
 			msg.setRecipient("eu@martinho.pt");
 			msg.setSubject(`O SITE ESTA A RETORNAR ${result.status} EM VEZ DE 2XX OU 3XX`);
 			msg.addMessage({
