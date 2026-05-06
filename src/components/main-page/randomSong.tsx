@@ -8,6 +8,12 @@ type RandomSongProps = {
 	style?: React.CSSProperties,
     onClose?:(()=>void)
 }
+const now = new Date();
+
+const year = now.getFullYear();
+const month = now.getMonth() + 1; // Months are 0-11
+const day = now.getDate();
+
 const playlistId = "PLyLyJwftT08Wj9-H5bKqkZMdUQ8cBvuzA"
 function isOfNonArtistChannel(author: string): boolean {
     return author.indexOf("Trap Nation") >= 0 
@@ -30,6 +36,19 @@ function isOfNonArtistChannel(author: string): boolean {
     || author.indexOf("NUFORM") >= 0 
     || author.indexOf("No Copyright Sounds") >= 0 
     || author.indexOf("The Drum & Bass Lounge") >= 0 
+}
+// seeded randomness
+function mulberry32(a) {
+    return function() { //version 3 https://github.com/cprosche/mulberry32
+      a |= 0; a = a + 0x6D2B79F5 | 0;
+      var t = Math.imul(a ^ a >>> 15, 1 | a);
+      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    }
+}
+function todaySeededRandom() {
+	let seed = year+month+day
+	return mulberry32(seed)
 }
 
 function cleanVideoTitle(title: string): string {
@@ -112,7 +131,7 @@ export function RandomSong(props:RandomSongProps) {
                     
                     const playlist = await innerTube.getPlaylist(playlistId);
                     const items = playlist.items.filter((x) => x instanceof YTNodes.PlaylistVideo);
-                    const item = items[Math.floor(Math.random() * items.length)];
+                    const item = items[Math.floor(todaySeededRandom() * items.length)];
                     setVideo(item)
                 } catch (e) {
                     console.log("ERRO a fazer fetch", e)
